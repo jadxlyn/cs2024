@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarLITE | Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    <style>
+
+        .cta-button {
+    background-color: #ff4f4f; /* Red, like the Nintendo Switch buttons */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: scale(1.1); /* Slightly enlarge the button */
+    box-shadow: 0 5px 15px rgba(255, 79, 79, 0.6); /* Nintendo-style glow */
+}
+
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Rubik", sans-serif;
+        }
+        
+        .container {
+            max-width: 1200px; /* Adjust this value as needed */
+            margin: 0 auto;
+            padding: 20px; /* Add padding for spacing from the edges */
+        }
+
+
+
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Blog Header */
+            /* Header Styles */
+    header {
+    background-color: #e60012;
+    color: white;
+    padding: 18px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative; /* Added position relative */
+    }
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        position: absolute; /* Position logo absolutely */
+        left: 0; /* Align to left */
+        display: flex; /* Added to align text and image horizontally */
+        align-items: center; /* Center items vertically */
+        color: white; /* Ensure text is white */
+    }
+    .logo-image {
+        height: 32px; /* Adjusted to match the star size in the image */
+        margin-left: 8px; /* Space between text and image */
+    }
+    nav {
+        width: 100%; /* Take full width */
+        display: flex;
+        justify-content: flex-end; /* Align content to the right */
+    }
+    nav ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        justify-content: flex-end; /* Ensure list items are right-aligned */
+    }
+    nav ul li {
+        margin-left: 30px;
+        font-weight: 500;
+        font-size: 16px;
+        position: relative;
+    }
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+        color: #ffcc00;
+    }
+    nav ul li a.active {
+        font-weight: 700;
+    }
+
+
+    /* Dropdown */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+            text-decoration: none;
+    }
+
+    .dropdown-content {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 180px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        top: 30px;
+        left: 0;
+        transition: visibility 0s, opacity 0.3s;
+        transition-delay: 0.3s, 0s;
+        z-index: 1;
+            text-decoration: none;
+    }
+
+    .dropdown:hover .dropdown-content,
+    .dropdown-content:hover {
+        visibility: visible;
+        opacity: 1;
+        transition-delay: 0s;
+            text-decoration: none;
+    }
+
+    .dropdown-content a {
+        color: #333;
+        padding: 12px 16px;
+        display: block;
+        font-size: 14px;
+            text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+        color: #e60012;
+            text-decoration: none;
+    }
+
+    .mobile-menu-button {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+            text-decoration: none;
+    }
+         /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #e60012 0%, #ff4d4d 100%);
+            color: white;
+            padding: 60px 5%;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        /* Main Blog Content */
+        .blog-content {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .blog-content h2 {
+            color: #e60012;
+            font-size: 1.8rem;
+            margin: 30px 0 15px;
+            font-weight: 700;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.4rem;
+            margin: 25px 0 15px;
+            color: #444;
+        }
+        
+        .blog-content p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        
+        .blog-content ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .blog-content li {
+            margin-bottom: 10px;
+        }
+        
+        .blog-content strong {
+            font-weight: 700;
+        }
+        
+        .blog-content em {
+            font-style: italic;
+        }
+        
+        .blog-image {
+            width: 100%;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        /* Featured section */
+        .featured-section {
+            background-color: #fff5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid #e60012;
+        }
+        
+        /* Call to action */
+        .cta-section {
+            background: linear-gradient(to right, #e60012, #ff5757);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .cta-section h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #e60012;
+            color: white;
+            padding: 12px 30px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+        
+        .cta-button:hover {
+            background-color: #333;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Emoji styling */
+        .emoji {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        /* Game list */
+        .game-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+         ul {
+    list-style: none;
+    padding-left: 0;
+  }
+        
+        .game-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+
+        
+        /* Author section */
+        .author-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .author-info p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        /* Community Section */
+        .community-section {
+            margin-top: 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #e60012;
+        }
+        
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .community-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .community-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .community-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .community-content {
+            padding: 20px;
+        }
+        
+        .community-content h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .community-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        .community-author {
+            margin-right: 15px;
+        }
+        
+        .community-date {
+            margin-left: auto;
+        }
+        
+        /* Related Articles */
+
+        /* General section styles */
+.related-articles {
+    padding: 40px 20px;
+    background-color: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Centers content horizontally */
+    justify-content: center;
+    text-align: center;
+    height: 100vh;  /* Ensures full height of the viewport */
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Articles Grid */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 articles per row */
+    gap: 20px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto; /* Centers the grid horizontally */
+    justify-items: center; /* Centers each grid item horizontally */
+}
+
+/* Article Card Styling */
+.article-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 100%; /* Take up the full width available in the grid */
+    max-width: 300px; /* Limit the max width of each card */
+}
+
+.article-card:hover {
+    transform: translateY(-10px);
+}
+
+.article-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Article Content Styling */
+.article-content {
+    padding: 20px;
+}
+
+.article-content h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.article-content p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.read-more {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.read-more:hover {
+    color: #0056b3;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+    .articles-grid {
+        grid-template-columns: 1fr; /* Stack articles vertically on smaller screens */
+    }
+}
+
+        .related-articles {
+            margin-top: 60px;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .article-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .article-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .article-content {
+            padding: 15px;
+        }
+        
+        .article-content h3 {
+            font-size: 1.1rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .read-more {
+            color: #e60012;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        /* Subscribe Section */
+        .subscribe-section {
+            background-color: #333;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .subscribe-form {
+            max-width: 500px;
+            margin: 30px auto 0;
+            display: flex;
+        }
+        
+        .subscribe-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+        }
+        
+        .subscribe-button {
+            background-color: #e60012;
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 30px 30px 0;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .subscribe-button:hover {
+            background-color: #ff3c4a;
+        }
+        
+        /* Footer */
+         footer {
+        background-color: #222;
+        color: white;
+        padding: 60px 5% 40px;
+            text-decoration: none;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+            text-decoration: none;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+            text-decoration: none;
+    }
+
+    .footer-column h4 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #ffcc00;
+            text-decoration: none;
+    }
+
+    .footer-links {
+        list-style-type: none;
+            text-decoration: none;
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+            text-decoration: none;
+    }
+
+    .footer-links li a {
+        color: #aaa;
+        transition: color 0.3s;
+            text-decoration: none;
+    }
+
+    .footer-links li a:hover {
+        color: white;
+            text-decoration: none;
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 60px;
+        padding-top: 20px;
+        border-top: 1px solid #444;
+        color: #aaa;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+    .mobile-menu-button {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                padding: 20px;
+            }
+            
+            .community-grid, .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .subscribe-form {
+                flex-direction: column;
+            }
+            
+            .subscribe-input {
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+            
+            .subscribe-button {
+                border-radius: 30px;
+                padding: 12px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <!-- Blog Header -->
+     <header>
+        <div class="header-container">
+            <div class="logo">
+                StarLITE
+                <img src="./images/logo.jpg" alt="StarLITE Logo" class="logo-image">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li class="dropdown">
+                        <a href="products.html">Products</a>
+                        <div class="dropdown-content">
+                            <a href="products.html">Nintendo Switch Lite</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="about.html">About</a>
+                        <div class="dropdown-content">
+                            <a href="about.html">About Us</a>
+                            <a href="blog.html">Blog</a>
+                            <a href="locateus.html">Locate Us</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="support.html">Support</a>
+                        <div class="dropdown-content">
+                            <a href="support.html">Help Center</a>
+                            <a href="faqs.html">FAQs</a>
+                            <a href="control.html">Controls</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-button">☰</button>
+        </div>
+    </header>
+
+     <!-- Page Header -->
+    <section class="page-header">
+        <h1>Blog</h1>
+        <p>Hear stories from the StarLITE community!</p>
+    </section>
+
+
+        <!-- Main Blog Content -->
+        <article class="blog-content">
+    <div class="container"> <!-- Wrap the content in a container -->
+        <!-- Author Section -->
+        <div class="author-section">
+            <img src="./images/female1.png" alt="Nintendo Staff Writer" class="author-image">
+            <div class="author-info">
+                <h4>Peishan Tan</h4>
+                <p>Nintendo Community Manager | Posted April 1, 2025</p>
+            </div>
+        </div>
+
+        <h1>Why the Nintendo Switch Lite Is the Ultimate Handheld Gaming Console</h1>
+
+        <p>If you're looking for a gaming device that's lightweight, affordable, and packed with entertainment, the <strong>Nintendo Switch Lite</strong> is the perfect choice. Whether you're a casual gamer, a student looking for a break between classes, or a frequent traveler who needs gaming on the go, the Switch Lite delivers a seamless and fun experience.</p>
+
+        <img src="./images/blog1.jpg" alt="Nintendo Switch Lite in multiple colors" class="blog-image">
+
+        <h2><i class="fa-solid fa-gamepad"></i>&nbsp; Portable & Lightweight – Built for Gaming on the Go</h2>
+
+        <p>Unlike the standard Nintendo Switch, the <strong>Switch Lite is a dedicated handheld device</strong>—meaning no bulky docking stations or detachable controllers. At just <strong>275g</strong>, it's lighter than most smartphones, making it incredibly easy to slip into your bag or pocket. If you love gaming during commutes or while traveling, this console is a game-changer.</p>
+
+        <h2><i class="fa-solid fa-palette"></i>&nbsp; A Splash of Color to Match Your Style</h2>
+
+        <p>Why settle for plain black or grey when you can have <strong>Turquoise, Coral, Blue, Yellow, or Gray</strong>? The Switch Lite comes in a variety of vibrant colors, letting you choose a console that suits your personality. Plus, its smooth matte finish gives it a sleek and modern look.</p>
+
+        <img src="./images/blogcolours.jpg" alt="Nintendo Switch Lite Color Options" class="blog-image">
+        
+        <h2><i class="fa-solid fa-gamepad"></i>&nbsp; Access to an Expansive Game Library</h2>
+
+        <p>With the <strong>Nintendo Switch Lite, you can play thousands of games</strong> from Nintendo's legendary lineup, including:</p>
+
+        <ul class="game-list">
+            <li><i class="fa-solid fa-circle-check"></i> <em>Animal Crossing: New Horizons</em> – Build your dream island paradise.</li>
+            <li><i class="fa-solid fa-circle-check"></i> <em>Mario Kart 8 Deluxe</em> – Race your friends in exciting multiplayer battles.</li>
+            <li><i class="fa-solid fa-circle-check"></i> <em>The Legend of Zelda: Breath of the Wild</em> – Explore a breathtaking open world.</li>
+            <li><i class="fa-solid fa-circle-check"></i> <em>Pokémon Scarlet & Violet</em> – Catch, train, and battle Pokémon in a stunning RPG adventure.</li>
+        </ul>
+
+        <p>And many more! With Nintendo eShop, you can download games instantly, so there's always something new to play.</p>
+
+        <h2><i class="fa-solid fa-battery-full"></i> &nbsp; Long-Lasting Battery Life for Hours of Fun</h2>
+
+        <p>The Switch Lite is optimized for <strong>longer battery life</strong>, lasting <strong>3 to 7 hours</strong> depending on the game. That means you can enjoy extended gaming sessions without constantly reaching for a charger. Whether you're on a road trip or relaxing at home, the fun never stops.</p>
+
+        <h2><i class="fa-solid fa-users"></i> &nbsp; Multiplayer Made Easy</h2>
+
+        <p>Just because it's a handheld console doesn't mean you have to play alone. The Switch Lite supports <strong>wireless local multiplayer and online play</strong>, so you can team up with (or compete against) friends, no matter where they are. Simply connect via WiFi and dive into the action.</p>
+
+        <div class="featured-section">
+            <h3>Fan Spotlight: Sarah's Animal Crossing Island</h3>
+            <p>"I've spent over 300 hours building my island on my Coral Switch Lite. The portability means I can check in on my villagers while on lunch breaks or waiting for appointments. The console's battery life is impressive – I can play for hours without charging!"</p>
+            <p>– Sarah K., Chicago</p>
+            <img src="./images/bloganimalcrossing.jpg" alt="Nintendo Switch Lite in multiple colors" class="blog-image">
+        </div>
+
+        <h2><i class="fa-solid fa-dollar-sign"></i> &nbsp; Affordable Without Compromise</h2>
+
+        <p>At a lower price point than the original Nintendo Switch, the <strong>Switch Lite offers premium gaming at an affordable cost</strong>. It's a fantastic choice for gamers who don't need TV mode and want a dedicated handheld device at a great value.</p>
+
+        <h2><i class="fa-solid fa-gifts"></i> &nbsp; Perfect Gift for Any Gamer</h2>
+
+        <p>Whether you're shopping for a <strong>birthday, holiday, or just because</strong>, the Nintendo Switch Lite is a <strong>fantastic gift for kids, teens, and adults alike</strong>. With its impressive game library, stylish design, and portability, it's guaranteed to bring joy to any gamer.</p>
+
+        <div class="cta-section">
+            <h3> Get Your Nintendo Switch Lite Today! </h3>
+            <p>Ready to take your gaming anywhere? <strong>Grab the Nintendo Switch Lite now</strong> and experience the ultimate in handheld gaming!</p>
+            <a href="https://shopee.sg/-Nintendo-Official-Store-Nintendo-Switch-Lite-Gray-i.508676651.13401479075?sp_atk=dbc5004b-88ae-4966-b9a8-d3e8170bd139&xptdk=dbc5004b-88ae-4966-b9a8-d3e8170bd139" class="cta-button">Buy Now</a>
+        </div>
+    </div> <!-- End of container -->
+</article>
+
+        
+        <!-- Community Section -->
+       <section class="community-section">
+  <div class="container">
+    <h2 class="section-title">Fan Stories & Community</h2>
+
+    <div class="community-grid">
+      <!-- Community Story 1 -->
+      <div class="community-card">
+        <img src="./images/male1.png" alt="Custom Joy-Con Design" class="community-image">
+        <div class="community-content">
+          <div class="community-meta">
+            <span class="community-author">By Jadalyn A.</span>
+            <span class="community-date">March 27, 2025</span>
+          </div>
+          <h3>My Journey Creating Custom Joy-Con Art</h3>
+          <p>How I transformed my standard Switch controllers into unique works of art inspired by my favorite games.</p>
+          <a href="#" class="read-more">Read the full story</a>
+        </div>
+      </div>
+
+      <!-- Community Story 2 -->
+      <div class="community-card">
+        <img src="./images/female2.png" alt="Multiplayer Tournament" class="community-image">
+        <div class="community-content">
+          <div class="community-meta">
+            <span class="community-author">By Caroline O.</span>
+            <span class="community-date">March 24, 2025</span>
+          </div>
+          <h3>How I Organized a 32-Player Mario Kart Tournament</h3>
+          <p>Tips and tricks for hosting your own multiplayer gaming event with friends from around the world.</p>
+          <a href="#" class="read-more">Read the full story</a>
+        </div>
+      </div>
+
+      <!-- Community Story 3 -->
+      <div class="community-card">
+        <img src="./images/male2.png" alt="Switch Gaming Setup" class="community-image">
+        <div class="community-content">
+          <div class="community-meta">
+            <span class="community-author">By Meredith T.</span>
+            <span class="community-date">March 20, 2025</span>
+          </div>
+          <h3>My Perfect Travel Gaming Setup with Switch Lite</h3>
+          <p>The ultimate accessories and tips for gaming on the go with your Nintendo Switch Lite.</p>
+          <a href="#" class="read-more">Read the full story</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+      <a href="#" class="cta-button">Share Your Story</a>
+    </div>
+  </div>
+</section>
+
+        
+        <!-- Related Articles -->
+      <!-- Related Articles -->
+<section class="related-articles">
+    <h2 class="section-title">More From Our Blog</h2>
+    
+    <div class="articles-grid">
+        <!-- Article 1 -->
+        <div class="article-card">
+            <img src="./images/blogindie.jpg" alt="Nintendo Switch Games" class="article-image">
+            <div class="article-content">
+                <h3>Top 10 Indie Games You Need to Play on Switch Lite</h3>
+                <p>Discover hidden gems that showcase the versatility of your handheld console.</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </div>
+        
+        <!-- Article 2 -->
+        <div class="article-card">
+            <img src="./images/blogacc.jpg" alt="Nintendo Switch Accessories" class="article-image">
+            <div class="article-content">
+                <h3>Essential Accessories for Your Switch Lite in 2025</h3>
+                <p>Upgrade your gaming experience with these must-have accessories.</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </div>
+        
+        <!-- Article 3 -->
+        <div class="article-card">
+            <img src="./images/blogbatt.jpg" alt="Nintendo Switch Tips" class="article-image">
+            <div class="article-content">
+                <h3>Battery-Saving Tips to Extend Your Switch Lite Gaming Sessions</h3>
+                <p>Simple tricks to make your console last longer between charges.</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </div>
+        
+        <!-- Article 4 -->
+        <div class="article-card">
+            <img src="./images/blogmost.jpg" alt="Nintendo Switch Online" class="article-image">
+            <div class="article-content">
+                <h3>Making the Most of Nintendo Switch Online with Your Switch Lite</h3>
+                <p>Unlock the full potential of online gaming and exclusive content.</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    
+    <!-- Subscribe Section -->
+    <section class="subscribe-section">
+        <div class="container">
+            <h2>Join Our Nintendo Switch Community</h2>
+            <p>Subscribe to receive the latest news, tips, and community stories straight to your inbox.</p>
+            
+            <form class="subscribe-form">
+                <input type="email" placeholder="Your email address" class="subscribe-input" required>
+                <button type="submit" class="subscribe-button">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="products.html">Nintendo Switch Lite</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="support.html">Help Center</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="control.html">Controls</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="locateus.html">Locate Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="pdpa.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 StarLITE. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

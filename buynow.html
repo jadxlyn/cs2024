@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarLITE | Cart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    <style>
+
+              .cta-button {
+    background-color: #ff4f4f; /* Red, like the Nintendo Switch buttons */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: scale(1.1); /* Slightly enlarge the button */
+    box-shadow: 0 5px 15px rgba(255, 79, 79, 0.6); /* Nintendo-style glow */
+}
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Rubik", sans-serif;
+        }
+        
+        body {
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+        }
+        
+        /* Header Styles */
+        header {
+    background-color: #e60012;
+    color: white;
+    padding: 18px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative; /* Added position relative */
+    }
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        position: absolute; /* Position logo absolutely */
+        left: 0; /* Align to left */
+        display: flex; /* Added to align text and image horizontally */
+        align-items: center; /* Center items vertically */
+        color: white; /* Ensure text is white */
+    }
+    .logo-image {
+        height: 32px; /* Adjusted to match the star size in the image */
+        margin-left: 8px; /* Space between text and image */
+    }
+    nav {
+        width: 100%; /* Take full width */
+        display: flex;
+        justify-content: flex-end; /* Align content to the right */
+    }
+    nav ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        justify-content: flex-end; /* Ensure list items are right-aligned */
+    }
+    nav ul li {
+        margin-left: 30px;
+        font-weight: 500;
+        font-size: 16px;
+        position: relative;
+    }
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+        color: #ffcc00;
+    }
+    nav ul li a.active {
+        font-weight: 700;
+    }
+        
+        /* Dropdown Menu Styles - MODIFIED */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            top: 30px;
+            left: 0;
+            transition: visibility 0s, opacity 0.3s;
+            transition-delay: 0.3s, 0s;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
+        }
+        
+        /* Keep dropdown visible when hovering over it */
+        .dropdown-content:hover {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
+        }
+        
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: #e60012;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #e60012 0%, #ff4d4d 100%);
+            color: white;
+            padding: 60px 5%;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 60px 5%;
+            background-color: white;
+        }
+        
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Product Showcase */
+        .product-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .product-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .product-title {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #e60012;
+        }
+        
+        .product-description {
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+        
+        .product-price {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: #333;
+        }
+        
+        .product-colors {
+            margin-bottom: 25px;
+        }
+        
+        .color-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+        
+        .color-option.active {
+            border-color: #e60012;
+        }
+        
+        .color-gray {
+            background-color: #8c8c8c;
+        }
+        
+        .color-yellow {
+            background-color: #ffdb57;
+        }
+        
+        .color-turquoise {
+            background-color: #00c3e3;
+        }
+        
+        .color-coral {
+            background-color: #ff6b5b;
+        }
+        
+        .purchase-options {
+            margin-top: 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #e60012;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 500;
+            margin-right: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #c5000f;
+            transform: translateY(-3px);
+        }
+        
+        .cta-button.secondary {
+            background-color: #333;
+        }
+        
+        .cta-button.secondary:hover {
+            background-color: #222;
+        }
+
+        /* Features Section */
+        .features-section {
+            background-color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Force 3 columns exactly */
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            fill: #e60012;
+            width: 40px;
+            height: 40px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        /* How to Buy Section */
+        .how-to-buy {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #eee;
+        }
+        
+        .how-to-buy h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #e60012;
+        }
+        
+        .buying-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .buying-option {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .buying-option:hover {
+            transform: translateY(-5px);
+        }
+        
+        .buying-option h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #e60012;
+        }
+        
+        .buying-option p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .option-icon {
+            background-color: #e60012;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        /* Bundle Deals Section */
+        .bundle-deals {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid #eee;
+        }
+
+        .bundle-deals h3 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #e60012; /* Same color as How to Buy title */
+        }
+
+        .bundles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* Bundle Card Styles */
+        .bundle-card {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .bundle-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .bundle-image {
+            height: 180px;
+            background-color: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bundle-info {
+        padding: 20px;
+        }
+
+        .bundle-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #e60012;
+        }       
+
+        .bundle-price {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        }
+
+        .bundle-description {
+        margin-bottom: 15px;
+        font-size: 14px;
+        color: #555;
+        }
+
+        
+        .bundle-image {
+            height: 180px;
+            background-color: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .bundle-info {
+            padding: 20px;
+        }
+        
+        .bundle-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #e60012;
+        }
+        
+        .bundle-price {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .bundle-description {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 60px 5% 40px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+        
+        .footer-links {
+            list-style-type: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links li a {
+            color: #aaa;
+            transition: color 0.3s;
+        }
+        
+        .footer-links li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .page-header h1 {
+                font-size: 30px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .product-title {
+                font-size: 28px;
+            }
+            
+            .product-price {
+                font-size: 24px;
+            }
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Media Queries */
+        @media screen and (max-width: 992px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .games-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .hero p {
+                font-size: 20px;
+            }
+            
+            .games-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            /* Mobile dropdown modifications */
+            .dropdown-content {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                background-color: rgba(0,0,0,0.1);
+                display: none;
+            }
+            
+            nav ul li {
+                width: 100%;
+                margin: 0;
+                padding: 10px 0;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                StarLITE
+                <img src="./images/logo.jpg" alt="StarLITE Logo" class="logo-image">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li class="dropdown">
+                        <a href="products.html">Products</a>
+                        <div class="dropdown-content">
+                            <a href="products.html">Nintendo Switch Lite</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="support.html">About</a>
+                        <div class="dropdown-content">
+                            <a href="about.html">About Us</a>
+                            <a href="blog.html">Blog</a>
+                            <a href="locateus.html">Locate Us</a>
+                            
+                        </div>
+                    </li>
+                     <li class="dropdown">
+                        <a href="about.html">Support</a>
+                        <div class="dropdown-content">
+                            <a href="support.html">Help Center</a>
+                            <a href="faqs.html">FAQs</a>
+                            <a href="control.html">Controls</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-button">☰</button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Nintendo Switch Lite</h1>
+        <p>A compact, lightweight console for on-the-go gaming</p>
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="content-container">
+            <!-- Product Showcase -->
+            <div class="product-showcase">
+    <div class="product-image">
+        <img id="product-image" src="./images/grey.png" alt="Nintendo Switch Lite Gray">
+       </div>
+
+                
+                <!-- Product Info -->
+                <div class="product-info">
+                    <h2 class="product-title">Nintendo Switch Lite</h2>
+                    <p class="product-description">Dedicated to handheld play, the Nintendo Switch Lite is a compact, lightweight console that's perfect for gaming on the go. With a built-in +Control Pad and a sleek, unibody design, it's ready to hit the road whenever you are.</p>
+                    <p class="product-description">Enjoy the vast library of Nintendo Switch games that support handheld mode, and connect with friends for multiplayer fun.</p>
+                    
+                    <div class="product-price">
+                        SGD 269.00
+                    </div>
+                    
+                    <div class="product-colors">
+                        <h3>Available Colors:</h3>
+                        <div class="color-options">
+                            <div class="color-option color-gray active" title="Gray"></div>
+                            <div class="color-option color-yellow" title="Yellow"></div>
+                            <div class="color-option color-turquoise" title="Turquoise"></div>
+                            <div class="color-option color-coral" title="Coral"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="purchase-options">
+                        <a href="https://shopee.sg/-Nintendo-Official-Store-Nintendo-Switch-Lite-Gray-i.508676651.13401479075?sp_atk=dbc5004b-88ae-4966-b9a8-d3e8170bd139&xptdk=dbc5004b-88ae-4966-b9a8-d3e8170bd139" class="cta-button" target="_blank">Buy Now on Shopee</a>
+                        <a href="locateus.html" class="cta-button secondary">Find in Store</a>
+                    </div>
+                </div>
+            </div>
+
+<!-- Features Section -->
+    <section class="how-to-buy">
+    <h2 class="section-title">Features & Specs</h2>
+    <div class="features-grid">
+        <div class="feature-item">
+            <svg class="feature-icon" viewBox="0 0 24 24">
+                <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H3V8h18v8zM6 15h2v-2h2v-2H8V9H6v2H4v2h2z"/>
+                <circle cx="14.5" cy="13.5" r="1.5"/>
+                <circle cx="18.5" cy="10.5" r="1.5"/>
+            </svg>
+            <h3 class="feature-title">Compact Design</h3>
+            <p>Lightweight at just 275g, with a 5.5-inch touch screen for comfortable handheld gaming anywhere.</p>
+        </div>
+        
+        <div class="feature-item">
+            <svg class="feature-icon" viewBox="0 0 24 24">
+                <path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM13 18h-2v-2h2v2zm0-4h-2V9h2v5z"/>
+            </svg>
+            <h3 class="feature-title">Long Battery Life</h3>
+            <p>Enjoy 3-7 hours of gameplay on a single charge, depending on the game and usage conditions.</p>
+        </div>
+        
+        <div class="feature-item">
+            <svg class="feature-icon" viewBox="0 0 24 24">
+                <path d="M18 2h-8L4 8v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H6V8.83L10.83 4H18v16zM9 7h2v4H9zm3 0h2v4h-2zm3 0h2v4h-2z"/>
+            </svg>
+            <h3 class="feature-title">32GB Storage</h3>
+            <p>Built-in storage with option to expand using microSD cards up to 2TB.</p>
+        </div>
+        
+        <div class="feature-item">
+            <svg class="feature-icon" viewBox="0 0 24 24">
+                <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
+            </svg>
+            <h3 class="feature-title">Wi-Fi Connectivity</h3>
+            <p>Connect online for multiplayer gaming, digital game downloads, and Nintendo Switch Online services.</p>
+        </div>
+        
+        <div class="feature-item">
+            <svg class="feature-icon" viewBox="0 0 24 24">
+                <path d="M12 3c-4.97 0-9 4.03-9 9v7c0 1.1.9 2 2 2h4v-8H5v-1c0-3.87 3.13-7 7-7s7 3.13 7 7v1h-4v8h4c1.1 0 2-.9 2-2v-7c0-4.97-4.03-9-9-9z"/>
+            </svg>
+            <h3 class="feature-title">Audio Options</h3>
+            <p>Built-in speakers and a 3.5mm headphone jack for immersive gaming audio experiences.</p>
+        </div>
+        
+        <div class="feature-item">
+        <svg class="feature-icon" viewBox="0 0 24 24">
+            <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+        </svg>
+        <h3 class="feature-title">Compatible Games</h3>
+        <p>Access a vast library of Nintendo Switch games that support handheld mode.</p>
+        </div>
+    </div>
+    </section>
+            
+            <!-- How to Buy Section -->
+            <div class="how-to-buy">
+                <h2>How to Buy</h2>
+                
+                <div class="buying-options">
+                    <!-- Online Option -->
+                    <div class="buying-option">
+                   <div class="option-icon">
+                <i class="fa-solid fa-globe"></i>
+                </div>
+                <h3>Buy Online</h3>
+
+
+                        <p>Purchase directly from our official partner stores and get doorstep delivery.</p>
+                        <a href="https://shopee.sg/-Nintendo-Official-Store-Nintendo-Switch-Lite-Gray-i.508676651.13401479075?sp_atk=dbc5004b-88ae-4966-b9a8-d3e8170bd139&xptdk=dbc5004b-88ae-4966-b9a8-d3e8170bd139" class="cta-button" target="_blank">Shop on Shopee</a>
+                    </div>
+                    
+                 <!-- In-Store Option -->
+                <div class="buying-option">
+                <div class="option-icon">
+                <i class="fa-solid fa-store"></i>
+                </div>
+                <h3>Visit a Store</h3>
+                <p>Experience the Nintendo Switch Lite hands-on at an authorized retailer near you.</p>
+                <a href="locateus.html" class="cta-button">Find a Store</a>
+                </div>
+
+                <!-- Trade-In Option -->
+                <div class="buying-option">
+                <div class="option-icon">
+                <i class="fa-solid fa-arrows-spin"></i>
+                </div>
+                <h3>Trade-In Program</h3>
+                <p>Trade in your old Nintendo console for credit towards your new Nintendo Switch Lite.</p>
+                <a href="trade-in.html" class="cta-button">Learn More</a>
+                </div>
+
+            </div>
+
+                
+                <!-- Bundle Deals -->
+               <div class="buying-option bundle-deals">
+
+                    <h3>Bundle Deals</h3>
+                    
+                    <div class="bundles-grid">
+                        <!-- Bundle 1 -->
+                        <div class="bundle-card">
+                            <div class="bundle-image">
+                                <img src="./images/cartb1.jpg" alt="Nintendo Switch Lite Starter Bundle">
+                            </div>
+                            <div class="bundle-info">
+                                <h4 class="bundle-title">Starter Bundle</h4>
+                                <p class="bundle-price">SGD 309.00</p>
+                                <p class="bundle-description">Nintendo Switch Lite + Screen Protector + Carrying Case</p>
+                                <a href="https://shopee.sg/-Nintendo-Official-Store-Nintendo-Switch-Lite-Gray-i.508676651.13401479075?sp_atk=dbc5004b-88ae-4966-b9a8-d3e8170bd139&xptdk=dbc5004b-88ae-4966-b9a8-d3e8170bd139" class="cta-button" target="_blank">Buy Now</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Bundle 2 -->
+                        <div class="bundle-card">
+                            <div class="bundle-image">
+                                <img src="./images/cartb3.jpg" alt="Nintendo Switch Lite Game Bundle">
+                            </div>
+                            <div class="bundle-info">
+                                <h4 class="bundle-title">Game Bundle</h4>
+                                <p class="bundle-price">SGD 359.00</p>
+                                <p class="bundle-description">Nintendo Switch Lite + Select Game + Carrying Case</p>
+                                <a href="https://shopee.sg/-Nintendo-Official-Store-Nintendo-Switch-Lite-Gray-i.508676651.13401479075?sp_atk=dbc5004b-88ae-4966-b9a8-d3e8170bd139&xptdk=dbc5004b-88ae-4966-b9a8-d3e8170bd139" class="cta-button" target="_blank">Buy Now</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Bundle 3 -->
+                        <div class="bundle-card">
+                            <div class="bundle-image">
+                                <img src="./images/cartb2.jpg" alt="Nintendo Switch Lite Complete Bundle">
+                            </div>
+                            <div class="bundle-info">
+                                <h4 class="bundle-title">Complete Bundle</h4>
+                                <p class="bundle-price">SGD 429.00</p>
+                                <p class="bundle-description">Nintendo Switch Lite + 2 Games + Accessories Pack</p>
+                                <a href="https://shopee.sg/-Nintendo-Official-Store-Nintendo-Switch-Lite-Gray-i.508676651.13401479075?sp_atk=dbc5004b-88ae-4966-b9a8-d3e8170bd139&xptdk=dbc5004b-88ae-4966-b9a8-d3e8170bd139" class="cta-button" target="_blank">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="products.html">Nintendo Switch Lite</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="support.html">Help Center</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="control.html">Controls</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html" class="active">Blog</a></li>
+                        <li><a href="locateus.html">Locate Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 StarLITE. All Rights Reserved. 
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+    document.querySelectorAll('.color-option').forEach(function(option) {
+        option.addEventListener('click', function() {
+            const colorClass = option.classList[1]; // color-gray, color-yellow, etc.
+            const imageElement = document.getElementById('product-image');
+            
+           if (colorClass === 'color-gray') {
+                imageElement.src = './images/grey.png';
+                } else if (colorClass === 'color-yellow') {
+                imageElement.src = './images/yellow.png';
+                } else if (colorClass === 'color-turquoise') {
+                imageElement.src = './images/turquoise.png';
+                } else if (colorClass === 'color-coral') {
+                imageElement.src = './images/pink.png';
+                }
+
+
+            // Highlight the selected color
+            document.querySelectorAll('.color-option').forEach(function(option) {
+                option.classList.remove('active');
+            });
+            option.classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nintendo Switch Lite FAQs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Rubik", sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+            /* Header Styles */
+        header {
+            background-color: #e60012;
+            color: white;
+            padding: 18px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            .header-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                max-width: 1200px;
+                margin: 0 auto;
+                position: relative; /* Added position relative */
+            }
+            .logo {
+                font-size: 24px;
+                font-weight: bold;
+                position: absolute; /* Position logo absolutely */
+                left: 0; /* Align to left */
+                display: flex; /* Added to align text and image horizontally */
+                align-items: center; /* Center items vertically */
+                color: white; /* Ensure text is white */
+            }
+            .logo-image {
+                height: 32px; /* Adjusted to match the star size in the image */
+                margin-left: 8px; /* Space between text and image */
+            }
+        nav {
+                width: 100%; /* Take full width */
+                display: flex;
+                justify-content: flex-end; /* Align content to the right */
+            }
+        nav ul {
+                display: flex;
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                justify-content: flex-end; /* Ensure list items are right-aligned */
+            }
+        nav ul li {
+                margin-left: 30px;
+                font-weight: 500;
+                font-size: 16px;
+                position: relative;
+            }
+        nav ul li a {
+                color: white;
+                text-decoration: none;
+            }
+        nav ul li a:hover,
+        nav ul li a.active {
+                color: #ffcc00;
+            }
+        nav ul li a.active {
+                font-weight: 700;
+            }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            z-index: 9999;
+        }
+
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 180px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            top: 30px;
+            left: 0;
+            transition: visibility 0s, opacity 0.3s;
+            transition-delay: 0.3s, 0s;
+            z-index: 999;
+        }
+
+        .dropdown:hover .dropdown-content,
+        .dropdown-content:hover {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            display: block;
+            font-size: 14px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: #e60012;
+        }
+
+        /* FAQ Header */
+        .faq-header {
+            background-color: #ff808a;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .faq-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("images/faq.png");
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .faq-header-content {
+            position: relative;
+            z-index: 0;
+        }
+        
+        .faq-title {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .faq-subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+            
+        /* FAQ Content */
+        .faq-content {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-bottom: 0px;
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eee;
+        }
+        
+        .faq-question {
+            background-color: #f8f8f8;
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: #fff5f5;
+        }
+        
+        .faq-question::after {
+            content: '+';
+            font-size: 24px;
+            font-weight: 300;
+            color: #e60012;
+        }
+        
+        .faq-item.active .faq-question {
+            background-color: #fff5f5;
+        }
+        
+        .faq-item.active .faq-question::after {
+            content: '−';
+        }
+        
+        .faq-answer {
+            background-color: white;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 1000px;
+        }
+        
+        .faq-answer p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .faq-answer ul, .faq-answer ol {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        
+        .faq-answer li {
+            margin-bottom: 8px;
+        }
+        
+        /* Call to action */
+        .cta-section {
+            background: linear-gradient(to right, #e60012, #ff5757);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 30px auto;
+            max-width: 800px;
+        }
+        
+        .cta-section h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: #e60012;
+            padding: 12px 30px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+        
+        .cta-button:hover {
+            background-color: #333;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Emoji styling */
+        .emoji {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 60px 5% 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+
+        .footer-links {
+            list-style-type: none;
+            text-decoration: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links li a {
+            color: #aaa;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+
+        .footer-links li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .faq-title {
+                font-size: 2rem;
+            }
+            
+            .faq-content {
+                padding: 20px;
+            }
+            
+            .category-button {
+                margin: 0 5px 10px;
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .faq-question {
+                padding: 15px;
+            }
+            
+            .faq-item.active .faq-answer {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+        <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                StarLITE
+                <img src="./images/logo.jpg" alt="StarLITE Logo" class="logo-image">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li class="dropdown">
+                        <a href="products.html">Products</a>
+                        <div class="dropdown-content">
+                            <a href="products.html">Nintendo Switch Lite</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="about.html">About</a>
+                        <div class="dropdown-content">
+                            <a href="about.html">About Us</a>
+                            <a href="blog.html">Blog</a>
+                            <a href="locateus.html">Locate Us</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="support.html">Support</a>
+                        <div class="dropdown-content">
+                            <a href="support.html">Help Center</a>
+                            <a href="faqs.html">FAQs</a>
+                            <a href="control.html">Controls</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-button">☰</button>
+        </div>
+    </header>
+
+    <!-- Main FAQ Page Content -->
+    <header class="faq-header">
+        <div class="container faq-header-content">
+            <h1 class="faq-title">Frequently Asked Questions</h1>
+            <p class="faq-subtitle">Everything you need to know about your Nintendo Switch Lite</p>
+        </div>
+    </header>
+        
+        <div class="faq-content">
+            <div class="faq-list">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">How do I set up my Nintendo Switch Lite for the first time?</div>
+                    <div class="faq-answer">
+                        <p>Follow these steps:</p>
+                        <ol>
+                            <li>Press the POWER Button to turn the system on</li>
+                            <li>Select the language you want to use</li>
+                            <li>Accept the End User License Agreement</li>
+                            <li>Connect to your Wi-Fi network</li>
+                            <li>Set your time zone</li>
+                            <li>Create or link a Nintendo Account</li>
+                            <li>Set up parental controls (optional)</li>
+                        </ol>
+                        <p>For a more detailed guide, please see our <a href="./support.html" style="color: #e60012; font-weight: bold;">Technical Support</a>.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">How long does the Nintendo Switch Lite battery last?</div>
+                    <div class="faq-answer">
+                        <p>The Nintendo Switch Lite can last approximately <strong>3 to 7 hours</strong> on a single charge, depending on the game you're playing and your brightness settings. Games with more intensive graphics will drain the battery faster.</p>
+                        <p>To maximize your battery life:</p>
+                        <ul>
+                            <li>Lower the screen brightness</li>
+                            <li>Turn on airplane mode when not using wireless communications</li>
+                            <li>Enable auto-sleep mode in system settings</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">What games are compatible with Nintendo Switch Lite?</div>
+                    <div class="faq-answer">
+                        <p>Nintendo Switch Lite is compatible with all Nintendo Switch games that support handheld mode, indicated behind the game packaging and the Nintendo eShop.</p>
+                        <p> <img src="./images/compatibility.png" width="100%" height="100%" align="centre"> 
+                        <p>Games that require detached Joy-Con controllers (like 1-2-Switch or Nintendo Labo) would require separate Joy-Con controllers to be purchased and connected to your Switch Lite.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">Can I connect my Nintendo Switch Lite to a TV?</div>
+                    <div class="faq-answer">
+                        <p>No, the Nintendo Switch Lite cannot be connected to a TV. It's designed exclusively for handheld play and does not include the necessary hardware to output video to an external display.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <div class="faq-question">Does the smaller screen make it harder to read things?</div>
+                    <div class="faq-answer">
+                        <p>The Nintendo Switch Lite is set up so that text doesn't blur, but if you feel that it is too small to read, the screen zoom function may assist you.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <div class="faq-question">How do I add friends on Nintendo Switch Lite?</div>
+                    <div class="faq-answer">
+                        <p>To add friends on your Nintendo Switch Lite:</p>
+                        <ol>
+                            <li>From the HOME Menu, select your user profile icon</li>
+                            <li>Select "Add Friend" from the left sidebar</li>
+                            <li>Choose one of the following methods:
+                                <ul>
+                                    <li>Search with Friend Code</li>
+                                    <li>Search for Local Users</li>
+                                    <li>Search for Users You've Played With</li>
+                                    <li>Search for Users You've Added as Friends on Smart Devices</li>
+                                </ul>
+                            </li>
+                            <li>Follow the on-screen instructions to send a friend request</li>
+                        </ol>
+                        <p>Note: You'll need to be connected to the internet and have a Nintendo Switch Online membership for some friend features.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 7 -->
+                <div class="faq-item">
+                    <div class="faq-question">How do I purchase and download games on my Nintendo Switch Lite?</div>
+                    <div class="faq-answer">
+                        <p>Purchasing and downloading games on your Nintendo Switch Lite is easy:</p>
+                        <ol>
+                            <li>Make sure your console is connected to the internet</li>
+                            <li>From the HOME Menu, select the Nintendo eShop icon</li>
+                            <li>Select your user account</li>
+                            <li>Browse games or use the search function to find specific titles</li>
+                            <li>Select a game to view its details page</li>
+                            <li>Select "Proceed to Purchase" and follow the payment instructions</li>
+                            <li>Once purchased, the game will begin downloading automatically</li>
+                        </ol>
+                        <p>You can also redeem download codes by selecting "Redeem Code" in the Nintendo eShop menu.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 8 -->
+                <div class="faq-item">
+                    <div class="faq-question">What is Nintendo Switch Online and do I need it?</div>
+                    <div class="faq-answer">
+                        <p>Nintendo Switch Online is a paid subscription service that provides the following benefits:</p>
+                        <ul>
+                            <li>Play games online with friends and players worldwide</li>
+                            <li>Access to a growing library of NES and SNES classic games</li>
+                            <li>Cloud backup for your save data (for supported games)</li>
+                            <li>Special offers and promotions exclusive to members</li>
+                            <li>Use of the Nintendo Switch Online smartphone app</li>
+                        </ul>
+                        <p>You'll need Nintendo Switch Online if you want to play most games online, but it's not required for single-player experiences or local multiplayer. Some free-to-play games like Fortnite don't require a subscription to play online.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 9 -->
+                <div class="faq-item">
+                    <div class="faq-question">Can you connect a Joy-Con?</div>
+                    <div class="faq-answer">
+                        <p>Handheld Mode-compatible games can be played with the Nintendo Switch Lite console alone, without a Joy-Con.</p>
+
+                        <p>Joy-Con controllers (sold separately) can be used with the Nintendo Switch Lite via wireless connection. </p>
+                        <p>For a more detailed guide, please see our <a href="./support.html" style="color: #e60012; font-weight: bold;">Technical Support</a>.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <h3>Still have questions? We're here to help!</h3>
+                <p>Our support team is ready to assist you with any other questions you might have about your Nintendo Switch Lite.</p>
+                <a href="./contact.html" class="cta-button">Contact Us</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="products.html">Nintendo Switch Lite</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="support.html">Help Center</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="control.html">Controls</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="locateus.html">Locate Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="pdpa.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 StarLITE. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for FAQ accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle FAQ item clicks
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Toggle active class on the clicked item
+                    item.classList.toggle('active');
+                    
+                    // Optional: Close other open items
+                    faqItems.forEach(otherItem => {
+                        if(otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            // Handle category button clicks
+            const categoryButtons = document.querySelectorAll('.category-button');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Here you would normally filter the FAQ items based on category
+                    console.log('Category selected:', button.textContent);
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliderItems = document.querySelectorAll('.slider-item');
+            const colorOptions = document.querySelectorAll('.color-option');
+            let currentIndex = 0;
+            let intervalId;
+            
+            // Function to update the active slide
+            function updateSlide(index) {
+                // Remove active class from all slides and color options
+                sliderItems.forEach(item => item.classList.remove('active'));
+                colorOptions.forEach(option => option.classList.remove('active'));
+                
+                // Add active class to selected slide and color option
+                sliderItems[index].classList.add('active');
+                colorOptions[index].classList.add('active');
+                
+                // Update current index
+                currentIndex = index;
+            }
+            
+            // Add click event listeners to color options
+            colorOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    updateSlide(index);
+                    
+                    // Reset automatic transition timer
+                    clearInterval(intervalId);
+                    startAutoTransition();
+                });
+            });
+            
+            // Function to automatically transition to the next color
+            function autoTransition() {
+                const nextIndex = (currentIndex + 1) % sliderItems.length;
+                updateSlide(nextIndex);
+            }
+            
+            // Start automatic transitions
+            function startAutoTransition() {
+                intervalId = setInterval(autoTransition, 3000); // Change color every 3 seconds
+            }
+            
+            // Initialize automatic transitions
+            startAutoTransition();
+        });
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarLITE | Help Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Rubik", sans-serif;
+        }
+        
+        body {
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+        }
+                
+        /* Header Styles */
+        header {
+            background-color: #e60012;
+            color: white;
+            padding: 18px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            .header-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                max-width: 1200px;
+                margin: 0 auto;
+                position: relative; /* Added position relative */
+            }
+            .logo {
+                font-size: 24px;
+                font-weight: bold;
+                position: absolute; /* Position logo absolutely */
+                left: 0; /* Align to left */
+                display: flex; /* Added to align text and image horizontally */
+                align-items: center; /* Center items vertically */
+                color: white; /* Ensure text is white */
+            }
+            .logo-image {
+                height: 32px; /* Adjusted to match the star size in the image */
+                margin-left: 8px; /* Space between text and image */
+            }
+            nav {
+                width: 100%; /* Take full width */
+                display: flex;
+                justify-content: flex-end; /* Align content to the right */
+            }
+            nav ul {
+                display: flex;
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                justify-content: flex-end; /* Ensure list items are right-aligned */
+            }
+            nav ul li {
+                margin-left: 30px;
+                font-weight: 500;
+                font-size: 16px;
+                position: relative;
+            }
+            nav ul li a {
+                color: white;
+                text-decoration: none;
+            }
+            nav ul li a:hover,
+            nav ul li a.active {
+                color: #ffcc00;
+            }
+            nav ul li a.active {
+                font-weight: 700;
+            }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 180px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            top: 30px;
+            left: 0;
+            transition: visibility 0s, opacity 0.3s;
+            transition-delay: 0.3s, 0s;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content,
+        .dropdown-content:hover {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            display: block;
+            font-size: 14px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: #e60012;
+        }
+
+       /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #e60012 0%, #ff4d4d 100%);
+            color: white;
+            padding: 60px 5%;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+            
+        /* Main Content */
+        .main-content {
+            padding: 60px 5%;
+            background-color: white;
+        }
+            
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+            
+        /* Support Hero Section */
+        .support-hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .support-intro {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 40px;
+        }
+        
+        .support-intro h2 {
+            font-size: 28px;
+            color: #e60012;
+            margin-bottom: 20px;
+        }
+        
+        .support-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .support-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Support Categories */
+        .support-categories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .support-category {
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .support-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            color: #e60012;
+        }
+        
+        .support-category h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .support-category p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .category-button {
+            display: inline-block;
+            background-color: #e60012;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .category-button:hover {
+            background-color: #c5000f;
+        }
+        
+        /* Technical Support Section */
+        .techsup-section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            color: #e60012;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .techsup-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .techsup-item {
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .techsup-question {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            padding: 15px 20px;
+            background-color: #f8f8f8;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .techsup-question:hover {
+            background-color: #fff5f5;
+        }
+
+        .techsup-answer {
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
+            border-top: 1px solid #eee;
+            display: none;
+        }
+
+
+
+
+        
+        /* Troubleshooting Section */
+        .troubleshooting-section {
+            margin-bottom: 60px;
+        }
+        
+        .issues-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .issues-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .issue-card {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .issue-card h3 {
+            font-size: 20px;
+            color: #e60012;
+            margin-bottom: 15px;
+        }
+        
+        .issue-card p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .solution-steps {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .solution-steps li {
+            margin-bottom: 10px;
+        }
+        
+        .video-link {
+            color: #e60012;
+            justify-content: flex-end;
+            font-weight: 500;
+            margin-top: 10px;
+ß
+        }
+        
+        .video-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Warranty Section */
+        .warranty-section {
+            margin-bottom: 60px;
+        }
+        
+        .warranty-info {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .warranty-info h3 {
+            font-size: 20px;
+            color: #e60012;
+            margin-bottom: 15px;
+        }
+        
+        .warranty-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .warranty-table th, .warranty-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .warranty-table th {
+            background-color: #f0f0f0;
+            font-weight: 600;
+        }
+        
+        .warranty-action {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .warranty-button {
+            display: inline-block;
+            background-color: #e60012;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .warranty-button:hover {
+            background-color: #c5000f;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-methods {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-methods h3 {
+            font-size: 20px;
+            color: #e60012;
+            margin-bottom: 20px;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #e60012;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+        
+        .contact-info h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-form h3 {
+            font-size: 20px;
+            color: #e60012;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input, 
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            background-color: #e60012;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-button:hover {
+            background-color: #c5000f;
+        }
+        
+                /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 60px 5% 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+
+        .footer-links {
+            list-style-type: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links li a {
+            color: #aaa;
+            transition: color 0.3s;
+        }
+
+        .footer-links li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Responsive Styles */
+        @media screen and (max-width: 992px) {
+            .support-categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .page-header h1 {
+                font-size: 30px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .support-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+        <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                StarLITE
+                <img src="./images/logo.jpg" alt="StarLITE Logo" class="logo-image">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li class="dropdown">
+                        <a href="products.html">Products</a>
+                        <div class="dropdown-content">
+                            <a href="products.html">Nintendo Switch Lite</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="about.html">About</a>
+                        <div class="dropdown-content">
+                            <a href="about.html">About Us</a>
+                            <a href="blog.html">Blog</a>
+                            <a href="locateus.html">Locate Us</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="support.html">Support</a>
+                        <div class="dropdown-content">
+                            <a href="support.html">Help Center</a>
+                            <a href="faqs.html">FAQs</a>
+                            <a href="control.html">Controls</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-button">☰</button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>StarLITE Help Center</h1>
+        <p>Get the help you need to keep your gaming experience smooth and enjoyable</p>
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="content-container">
+            <!-- Support Hero Section -->
+            <div class="support-hero">
+                <div class="support-intro">
+                    <h2>How Can We Help You Today?</h2>
+                    <p>We're here to help you get the most out of your Nintendo Switch Lite. </p>
+                    <p>Browse our comprehensive support categories below or search for specific topics to find quick solutions to common questions and issues.</p>
+                </div>
+                <div class="support-image">
+                    <img src="./images/techsupport.png" alt="Nintendo Switch Support" />
+                </div>
+            </div>
+            
+            <!-- Support Categories -->
+            <div class="support-categories">
+                <!-- Category 1 -->
+                <div class="support-category">
+                    <div class="category-icon"><i class="fa-solid fa-question"></i></div>
+                    <h3>Frequently Asked Questions</h3>
+                    <a href="./faqs.html" class="category-button">View FAQs</a>
+                </div>
+                
+                <!-- Category 2 -->
+                <div class="support-category">
+                    <div class="category-icon"><i class="fa-solid fa-gears"></i></div>
+                    <h3>Support & Troubleshooting</h3>
+                    <a href="#techsup-section" class="category-button">Fix Issues</a>
+                </div>
+                
+                <!-- Category 3 -->
+                <div class="support-category">
+                    <div class="category-icon"><i class="fa-solid fa-pen-to-square"></i></div>
+                    <h3>Warranty & Repairs</h3>
+                    <a href="#warranty-section" class="category-button">Warranty Info</a>
+                </div>
+            </div>
+            
+            <!-- Technical Support Section -->
+            <div id="techsup-section" class="techsup-section">
+                <h2 class="section-title">Technical Support</h2>
+                <div class="techsup-container">
+                    <!-- Technical Support Item 1: Charging -->
+                    <div class="techsup-item">
+                        <div class="techsup-question">Charging</div>
+                        <div class="techsup-answer">
+                            <p style="color: #e60012;"><b>Charging the Console</b></p>
+                            <ul>
+                                <li>Charge your console by connecting an AC adapter directly to the console, or by using a Nintendo Switch adjustable charging stand (sold separately).</li>
+                                <li>When you start charging, the battery icon ( <img src="./images/charge1.png" width=3%/> ) at the top-right of the HOME Menu screen will change to ( <img src="./images/charge2.png" width=4%/> ) to indicate that the console is charging.</li>
+                                <li>When your console has reached 100% charge, the battery icon will change to ( <img src="./images/charge3.png" width=3%/> ).</li>
+                                <li>A complete charge takes approximately 3 hours when the console is in sleep mode</li>
+                            </ul>
+                            <p>For more detailed help with charging issues, please check our <a href="#troubleshooting-section" style="color: #e60012;">troubleshooting section</a>.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Technical Support Item 2: Internet Connection -->
+                    <div class="techsup-item">
+                        <div class="techsup-question">Internet Connection</div>
+                        <div class="techsup-answer">
+                            <p style="color: #e60012;"><b>You can connect to the Internet either wirelessly or via a LAN cable.</b></p></br>
+                            <div class="techsup-item">
+                                <div class="techsup-question" id="wireless-connection">Setting up a wireless Internet connection:</div>
+                                <div class="techsup-answer">
+                                <p>Required components</p></br>
+                                <img style="align:center" width="70%" src="./images/wirelessconnection.png"/>
+                            <ol>
+                                <li>Place your Nintendo Switch console approximately 2 to 3 metres from your wireless router. Placing the console too far from the router may prevent it from establishing a connection.</li>
+                                <li>Press the HOME Button to display the HOME Menu, then select "System Settings"</li>
+                                <li>Select "Internet" → "Internet Settings".</li>
+                                <li>Under "Networks Found", select the SSID of the wireless router you're using.</li>
+                                <li>Enter the password for the wireless router and when "Connected" appears, the process is complete.</li>
+                            </ol></br>
+                            <p>Your Nintendo Switch will remember this network and connect automatically when in range.</p>
+                        </div>
+                    </div>
+                    <div class="techsup-item">
+                                <div class="techsup-question">Setting up a wired Internet connection:</div>
+                                <div class="techsup-answer">
+                                <p>Required components</p></br>
+                                <img style="align:center" width="70%" src="./images/wiredconnection.png"/>
+                            <ol>
+                                <li>Connect the USB hub to your Nintendo Switch Lite system.</li>
+                                <li>Connect a wired LAN adapter (sold separately) to a port on the USB hub, then use a LAN cable to connect the wired LAN adapter to your router.</li>
+                                <li>From this point, you should carry out the remaining instructions on your Nintendo Switch Lite. Press the HOME Button to display the HOME Menu, then select "System Settings".</li>
+                                <li>Select "Internet" → "Internet Settings".</li>
+                                <li>Select "Wired Connection" under "Registered Networks".</li>
+                                <li>Select "Connect to the Internet via Wired Connection". When "Connected" appears, the process is complete.</li>
+                            </ol></br>
+                            <p>When setting up a wired connection, we recommend you also carry out the <a href="#wireless-connection" style="color: #e60012;">wireless setup</a>.</p> </p> <p> With a wired connection, if you disconnect your console from your USB hub, the Internet connection will be lost. You're therefore advised to set up wireless Internet as well, so your console can switch over to a wireless connection whenever the hub is disconnected.</p>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Technical Support Item 3: Users -->
+                    <div class="techsup-item">
+                        <div class="techsup-question">Users</div>
+                        <div class="techsup-answer">
+                            <p style="color: #e60012;"><b>Managing users on your Nintendo Switch:</b></p>
+                            <ul>
+                                <li><strong>Add a new user:</strong> Go to System Settings > Users > Add User</li>
+                                <li><strong>Link a Nintendo Account:</strong> Go to System Settings > Users > [select user] > Link Nintendo Account</li>
+                                <li><strong>Create child accounts:</strong> Add a supervised account through the Nintendo Parental Controls app</li>
+                                <li><strong>Transfer user data:</strong> Have both Switch consoles, go to System Settings > Users > Transfer Your User Data</li>
+                                <li><strong>Delete a user:</strong> Go to System Settings > Users > [select user] > Delete User</li>
+                            </ul>
+                            <p>Each Nintendo Switch can have up to 8 user profiles. Linking a Nintendo Account enables online features and eShop purchases.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Technical Support Item 4: Friends -->
+                    <div class="techsup-item">
+                        <div class="techsup-question">Friends</div>
+                        <div class="techsup-answer">
+                            <p style="color: #e60012;"><b>Managing your friends list:</b></p>
+                            <ul>
+                                <li><strong>Add a friend:</strong> Select your profile icon on the HOME Menu > Add Friend</li>
+                                <li><strong>Friend Code:</strong> Your unique 12-digit code can be found in your User Profile</li>
+                                <li><strong>Add friend methods:</strong>
+                                    <ul style="margin-left:20px">
+                                        <li>Search by Friend Code</li>
+                                        <li>Search for Local Users</li>
+                                        <li>Search for Users You've Played With</li>
+                                        <li>Friends from other Nintendo apps (if linked)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Friend requests:</strong> Accept or decline in your profile page under Friend Requests</li>
+                                <li><strong>Remove a friend:</strong> Go to your profile, select the friend, and choose Remove Friend</li>
+                            </ul></br>
+                            <p>You can have up to 300 friends on your Nintendo Switch. A Nintendo Switch Online subscription is required for many online features.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Troubleshooting Section -->
+            <div id="troubleshooting-section" class="troubleshooting-section">
+                <h2 class="section-title">Common Issues & Solutions</h2>
+                <div class="issues-grid">
+                    <!-- Issue 1: Charging Problems -->
+                    <div class="issue-card">
+                        <h3>Nintendo Switch Won't Charge</h3>
+                        <p>If your Nintendo Switch Lite isn't charging properly, try these troubleshooting steps:</p>
+                        <ol class="solution-steps">
+                            <li>Use the original Nintendo Switch Lite AC adapter</li>
+                            <li>Check for any damage to the charging port or cable</li>
+                            <li>Let the console drain completely, then charge for at least 30 minutes before turning on</li>
+                            <li>Try a hard reset: Hold the Power button for 12 seconds, release, then press Power once</li>
+                            <li>Try charging directly to the console rather than through the dock</li>
+                        </ol>
+                        <a href="https://youtu.be/fN98HxBbrZA" target="_blank" class="video-link">Watch video guide →</a>
+                    </div>
+                    
+                    <!-- Issue 2: Connection Issues -->
+                    <div class="issue-card">
+                        <h3>Wireless Connection Problems</h3>
+                        <p>If you're having trouble connecting your Nintendo Switch Lite to the internet:</p>
+                        <ol class="solution-steps">
+                            <li>Move closer to your Wi-Fi router</li>
+                            <li>Restart both your router and Nintendo Switch</li>
+                            <li>Check if your Wi-Fi password has changed</li>
+                            <li>Try using a 2.4GHz network instead of 5GHz</li>
+                            <li>Update your system software if possible</li>
+                            <li>Manually set DNS settings (Primary: 8.8.8.8, Secondary: 8.8.4.4)</li>
+                        </ol>
+                        <a href="https://youtu.be/zfzsgYZPEmY" target="_blank" class="video-link">Watch video guide →</a>
+                    </div>
+                    
+                    <!-- Issue 3: Game Card Not Reading -->
+                    <div class="issue-card">
+                        <h3>Game Card Not Reading</h3>
+                        <p>If your Nintendo Switch Lite isn't reading game cards:</p>
+                        <ol class="solution-steps">
+                            <li>Remove and reinsert the game card</li>
+                            <li>Check for dirt or damage on the game card contacts</li>
+                            <li>Gently clean the game card slot with compressed air</li>
+                            <li>Restart your Nintendo Switch Lite</li>
+                            <li>Try another game card to see if the issue persists</li>
+                            <li>Update your system software</li>
+                        </ol>
+                        <a href="https://youtu.be/jBBLYLpEzBE?si=8UXol1ChCM1GZG4B" target="_blank" class="video-link">Watch video guide →</a>
+                    </div>
+                                
+                    <!-- Issue 4: Battery Drain -->
+                    <div class="issue-card">
+                        <h3>Excessive Battery Drain</h3>
+                        <p>If your Nintendo Switch Lite battery is draining too quickly:</p>
+                        <ol class="solution-steps">
+                            <li>Lower screen brightness from Quick Settings (hold Home button)</li>
+                            <li>Turn on Airplane Mode when not using wireless features</li>
+                            <li>Close software completely when not in use</li>
+                            <li>Turn off controller vibration in System Settings</li>
+                            <li>Update your system software</li>
+                            <li>Consider replacing the battery if your console is older (requires service)</li>
+                        </ol>
+                        <a href="https://youtu.be/mrLhxysgTUY?si=8CDPH0lsiScJLqGb" target="_blank" class="video-link">Watch video guide →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Warranty Section -->
+            <div id="warranty-section" class="warranty-section">
+                <h2 class="section-title">Warranty Information</h2>
+                <div class="warranty-info">
+                    <h3>Nintendo Switch Lite Warranty Coverage</h3>
+                    <p>Nintendo provides a 12-month limited warranty on all Nintendo Switch hardware, covering defects in materials and workmanship under normal use. Here's what you need to know:</p>
+                    
+                    <table class="warranty-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Warranty Period</th>
+                                <th>Coverage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Nintendo Switch Lite Console</td>
+                                <td>12 months from purchase</td>
+                                <td>Manufacturing defects, hardware failures</td>
+                            </tr>
+                            <tr>
+                                <td>AC Adapter</td>
+                                <td>12 months from purchase</td>
+                                <td>Charging functionality</td>
+                            </tr>
+                            <tr>
+                                <td>Joy-Con Controllers</td>
+                                <td>12 months from purchase</td>
+                                <td>Manufacturing defects, button failures, connectivity issues</td>
+                            </tr>
+                            <tr>
+                                <td>Other Accessories</td>
+                                <td>3-12 months (varies by item)</td>
+                                <td>Manufacturing defects</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>This Warranty Shall Not Apply, and No Repair Service Shall Be Provided if the Product: </h3>
+                    <ul>
+                        <li>Is damaged by any unauthorized modifications or tampering (including software);</li>
+                        <li>Has had the serial number altered, defaced or removed;</li>
+                        <li>Has been intentionally modified using malicious code, malware, virus, bots, worms, trojans, backdoors, exploits, cheats, hacks, or hidden diagnostics that may harm the product or our systems;</li>
+                        <li>Is damaged by negligence, accident, unreasonable use, or by other causes unrelated to defective materials or workmanship (including use with game enhancement and copier devices);</li>
+                        <li>Is found loss of data or any other content, such as software, as a result of formatting the memory of the product (or the SD card/MicroSD card or any other external storage device being used with the product);</li>
+                        <li>Has been resold, or used for rental or commercial purpose;</li>
+                        <li>Is judged by the service centre that it should be repaired with charge.</li>
+                    </ul>
+                </br>
+                    <h3>Repair Charge</h3>
+                    <ol>
+                        <li>If the warranty period has expired, the Service Centre may repair or replace the part causing the defect or replace the relevant element of the Product (at its sole discretion) with charges.</li>
+                        <li>Even if the Product is within the warranty period, the Service Centre may follow the <a href="./terms.html" style="color: #e60012;">Terms and Conditions</a> for Repair Service to provide the Repair Service with charges.</li>
+                        <li>For the details of any charges for the Repair Service, please contact the <a href="./contact.html" style="color: #e60012;">Service Centre</a>.</li>
+                        <li>If customer accepts the Repair Service with charges, please visit the <a href="./contact.html" style="color: #e60012;">Service Centre</a> to pay the charges.</li>
+                    </ol>
+                </br>
+                <h3>Data or Other Content Stored in the Memory of the Product</h3>
+                    <ol>
+                        <li>The Service Centre strongly recommends that customer makes a backup copy of any data that you do not remove or delete. Please note that, depending on the type of repair, data or other content stored in the memory of the Product may be deleted, and you may not be able to read data or other content saved to your SD card/MicroSD card or to any other external storage device, or import it back onto the Product following such repair.</li>
+                        <li>The Service Centre will not be responsible for any loss, deletion or corruption of customer’s files or data that has not been deleted or removed.</li>
+                    </ol>
+                </br>
+                <h3>Other Considerations</h3>
+                    <ol>
+                        <li>Warranty will not be re-issued under any circumstance.</li>
+                        <li>The Service Centre will not sell the repair parts.</li>
+                        <li>If the production of the Product comes to end, Nintendo Repair Centre will keep the repair parts for 6 years. The Service Centre may not be able to provide the Repair Service after the keeping time. Even if within the keeping time, the Service Centre may not be able to provide the Repair Service due to other factors such as regulation changes.</li>
+                        <li>The Service Centre will not be responsible for any loss which caused by defective product or repair service.</li>
+                        <li>Terms and Conditions for Repair Service may be changed without prior notice.</li>
+                        <li>For the Product of special version, depending on the stock of parts of special version, the Service Centre may replace the defective product with a product of normal version which is equivalent in all material respects. If the replaced part is used, the Product will change to normal version (including the package).</li>
+                    </ol>
+                </br>
+                    <h3>How to Request Warranty Service</h3>
+                    <p>If your Nintendo Switch system or accessories require service:</p>
+                    <ol>
+                        <li>Visit our <a href="./contact.html" style="color: #e60012;">Contact Us</a> page and select "Warranty Claim" in the subject.</li>
+                        <li>Fill out the required information about your product and issue.</li>
+                        <li>Print the shipping label provided (where applicable).</li>
+                        <li>Package your device securely with the shipping label.</li>
+                        <li>Ship your device to our headquarters.</li>
+                    </ol>
+            </div>
+</div></div></section
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="products.html">Nintendo Switch Lite</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="support.html">Help Center</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="control.html">Controls</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="locateus.html">Locate Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="pdpa.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 StarLITE. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all technical support question elements
+        const techSupQuestions = document.querySelectorAll('.techsup-question');
+        
+        // Add click event listeners to each question
+        techSupQuestions.forEach(question => {
+            question.addEventListener('click', function() {
+                // Toggle the active class on the parent item
+                const parent = this.parentElement;
+                parent.classList.toggle('active');
+                
+                // Update the display of the answer section
+                const answer = this.nextElementSibling;
+                if (parent.classList.contains('active')) {
+                    answer.style.display = 'block';
+                    this.style.backgroundColor = '#fff5f5';
+                    this.style.color = '#e60012';
+                    this.style.fontWeight = '700';
+                } else {
+                    answer.style.display = 'none';
+                    this.style.backgroundColor = '#f8f8f8';
+                    this.style.color = '#333';
+                    this.style.fontWeight = '600';
+                }
+            });
+        });
+        
+        // Initially hide all answers
+        document.querySelectorAll('.techsup-answer').forEach(answer => {
+            answer.style.display = 'none';
+        });
+    });
+</script>
+
+</body></html>

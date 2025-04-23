@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> StarLITE | Portable Gaming Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Rubik", sans-serif;
+        }
+        
+        body {
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #e60012;
+            color: white;
+            padding: 18px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative; /* Added position relative */
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            position: absolute; /* Position logo absolutely */
+            left: 0; /* Align to left */
+            display: flex; /* Added to align text and image horizontally */
+            align-items: center; /* Center items vertically */
+            color: white; /* Ensure text is white */
+        }
+        .logo-image {
+            height: 32px; /* Adjusted to match the star size in the image */
+            margin-left: 8px; /* Space between text and image */
+        }
+        nav {
+            width: 100%; /* Take full width */
+            display: flex;
+            justify-content: flex-end; /* Align content to the right */
+        }
+        nav ul {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            justify-content: flex-end; /* Ensure list items are right-aligned */
+        }
+        nav ul li {
+            margin-left: 30px;
+            font-weight: 500;
+            font-size: 16px;
+            position: relative;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #ffcc00;
+        }
+        nav ul li a.active {
+            font-weight: 700;
+        }
+        
+        /* Navigation Styles with Dropdown */
+        nav ul {
+            display: flex;
+            list-style-type: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+            font-weight: 500;
+            font-size: 16px;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+        
+        nav ul li a.active {
+            color: #ffcc00;
+            font-weight: 700;
+        }
+        
+        /* Dropdown Menu Styles - MODIFIED */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            top: 30px;
+            left: 0;
+            transition: visibility 0s, opacity 0.3s;
+            transition-delay: 0.3s, 0s;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
+        }
+        
+        /* Keep dropdown visible when hovering over it */
+        .dropdown-content:hover {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
+        }
+        
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: #e60012;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, #ffde00, #e60012);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: #e60012;
+            padding: 12px 30px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #333;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Models Section */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #e60012;
+        }
+        
+        .models-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .model-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: calc(33.333% - 20px);  /* This ensures 3 cards per row with gap considered */
+            max-width: 340px;
+            min-width: 280px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Target the 4th and 5th cards specifically */
+        .model-card:nth-child(4),
+        .model-card:nth-child(5) {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Add more spacing before the second row */
+        .model-card:nth-child(4) {
+            margin-left: calc(50% - 340px - 15px);  /* Half container minus card width and half gap */
+        }
+
+        .model-card:nth-child(5) {
+            margin-right: calc(50% - 340px - 15px);  /* Half container minus card width and half gap */
+        }
+
+        /* For the second row with 2 cards, we'll add this special styling */
+        .models-container::after {
+            content: "";
+            flex: 1;
+            max-width: calc(33.333% - 20px);
+            min-width: 280px;
+            /* This empty element helps with alignment for the last row */
+        }
+        
+        .model-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .model-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .model-details {
+            padding: 20px;
+        }
+        
+        .model-name {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #e60012;
+        }
+        
+        .model-price {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .model-features {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .shop-button {
+            background-color: #e60012;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .shop-button:hover {
+            background-color: #ff3c4a;
+        }
+
+        .shop-button a {
+            color: white;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+        
+        /* Features Section */
+        .features-section {
+            background-color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Force 3 columns exactly */
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            fill: #e60012;
+            width: 40px;
+            height: 40px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+                
+        /* Comparison Section */
+        .comparison-section {
+            margin-bottom: 60px;
+            padding: 0 20px; /* Add horizontal padding to the section */
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto 30px; /* Center the table with auto margins */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 1200px; /* Optional: limit the max width */
+        }
+
+        .comparison-table th {
+            background-color: #e60012;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            background-color: white;
+            border-bottom: 1px solid #eee;
+            text-align: center; /* Center align all table cell content */
+            vertical-align: middle; /* Vertically center content */
+        }
+
+        .comparison-table tr:first-child td {
+            font-weight: bold; /* Make the first row (price row) bold */
+        }
+
+        .comparison-table tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+
+        .comparison-table .feature-col {
+            text-align: left; /* Keep feature names left-aligned */
+            font-weight: 500; /* Make feature names slightly bolder */
+        }
+
+        /* Add some spacing around the entire table */
+        .comparison-container {
+            padding: 20px;
+        }
+        
+        /* Games Section */
+        .games-section {
+            padding: 40px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #e60012;
+        }
+
+        .games-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .game-item {
+            width: calc(25% - 15px);
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .game-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin: 15px 15px 8px;
+            color: #333;
+        }
+
+        .game-rating {
+            margin: 0 15px 8px;
+            color: #ffc107;
+        }
+
+        .game-description {
+            margin: 0 15px 15px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #666;
+            flex-grow: 1;
+        }
+
+        .view-game-btn {
+            display: block;
+            background-color: #e60012;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 15px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .view-game-btn:hover {
+            background-color: #ff3c4a;
+        }
+
+        .library-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .explore-library {
+            display: inline-block;
+            background-color: #fff;
+            color: #e60012;
+            border: 2px solid #e60012;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .explore-library:hover {
+            background-color: #e60012;
+            color: white;
+        }
+
+        
+        /* Reviews Section */
+        .reviews-section {
+            margin-bottom: 60px;
+            padding: 20px; /* Added padding around the entire section */
+        }
+
+        .reviews-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 30px; /* Increased gap between review cards */
+            padding: 20px 0 30px; /* Added vertical padding */
+            margin: 0 auto;
+            max-width: 1200px; /* Limit maximum width */
+            scrollbar-width: thin;
+        }
+
+        .reviews-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .reviews-container::-webkit-scrollbar-thumb {
+            background-color: #e60012;
+            border-radius: 3px;
+        }
+
+        .review-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px; /* Increased internal padding */
+            min-width: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .reviewer-info h4 {
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .review-rating {
+            color: gold;
+            font-size: 1.1rem;
+            margin-bottom: 12px; /* Added space after rating */
+        }
+
+        .review-text {
+            font-style: italic;
+            color: #555;
+            line-height: 1.5; /* Improved line spacing */
+        }
+
+        /* Add responsive padding adjustments */
+        @media (max-width: 768px) {
+            .reviews-section {
+                padding: 15px 10px;
+            }
+            
+            .review-card {
+                padding: 20px;
+                min-width: 260px;
+            }
+        }
+        
+        /* Deals Section */
+        .deals-section {
+            background-color: #fff5f5;
+            padding: 40px 0;
+            margin-bottom: 60px;
+        }
+        
+        .deals-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+            gap: 20px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        
+        .deal-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 350px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 2px dashed #e60012;
+            text-align: center;
+        }
+        
+        .deal-title {
+            color: #e60012;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .deal-description {
+            margin-bottom: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 60px 5% 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+
+        .footer-links {
+            list-style-type: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links li a {
+            color: #aaa;
+            transition: color 0.3s;
+        }
+
+        .footer-links li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .deals-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+                /* Mobile Menu Button */
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Media Queries */
+        @media screen and (max-width: 992px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .games-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .hero p {
+                font-size: 20px;
+            }
+            
+            .games-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            /* Mobile dropdown modifications */
+            .dropdown-content {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                background-color: rgba(0,0,0,0.1);
+                display: none;
+            }
+
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                StarLITE
+                <img src="./images/logo.jpg" alt="StarLITE Logo" class="logo-image">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li class="dropdown">
+                        <a href="products.html">Products</a>
+                        <div class="dropdown-content">
+                            <a href="products.html">Nintendo Switch Lite</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="about.html">About</a>
+                        <div class="dropdown-content">
+                            <a href="about.html">About Us</a>
+                            <a href="blog.html">Blog</a>
+                            <a href="locateus.html">Locate Us</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="support.html">Support</a>
+                        <div class="dropdown-content">
+                            <a href="support.html">Help Center</a>
+                            <a href="faqs.html">FAQs</a>
+                            <a href="control.html">Controls</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-button">☰</button>
+        </div>
+    </header>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Nintendo Switch Lite</h1>
+            <p>Dedicated to handheld play - your perfect gaming companion for on-the-go adventures.</p>
+            <a href="#models" class="cta-button">Explore Models</a>
+        </div>
+    </section>
+    
+    <!-- Models Section -->
+    <section id="models" class="container">
+        <h2 class="section-title">Available Models</h2>
+        <div class="models-container">
+            <!-- Turquoise Model -->
+            <div class="model-card">
+                <img src="./images/turquoise.jpg" alt="Nintendo Switch Lite Turquoise" class="model-image">
+                <div class="model-details">
+                    <h3 class="model-name">Switch Lite Turquoise</h3>
+                    <p class="model-price">SGD 269.00</p>
+                    <p class="model-features">
+                        Vibrant turquoise design<br>
+                        5.5-inch touch screen<br>
+                        Built-in controllers<br>
+                        3-7 hour battery life
+                    </p>
+                    <button class="shop-button"><a href="buynow.html">Shop Now</a></button>
+                </div>
+            </div>
+            
+            <!-- Yellow Model -->
+            <div class="model-card">
+                <img src="./images/yellow.jpg" alt="Nintendo Switch Lite Yellow" class="model-image">
+                <div class="model-details">
+                    <h3 class="model-name">Switch Lite Yellow</h3>
+                    <p class="model-price">SGD 269.00</p>
+                    <p class="model-features">
+                        Bright yellow design<br>
+                        5.5-inch touch screen<br>
+                        Built-in controllers<br>
+                        3-7 hour battery life
+                    </p>
+                    <button class="shop-button"><a href="buynow.html">Shop Now</a></button>
+                </div>
+            </div>
+            
+            <!-- Gray Model -->
+            <div class="model-card">
+                <img src="./images/gray.jpg" alt="Nintendo Switch Lite Gray" class="model-image">
+                <div class="model-details">
+                    <h3 class="model-name">Switch Lite Gray</h3>
+                    <p class="model-price">SGD 269.00</p>
+                    <p class="model-features">
+                        Classic gray design<br>
+                        5.5-inch touch screen<br>
+                        Built-in controllers<br>
+                        3-7 hour battery life
+                    </p>
+                    <button class="shop-button"><a href="buynow.html">Shop Now</a></button>
+                </div>
+            </div>
+            
+            <!-- Coral Model -->
+            <div class="model-card">
+                <img src="./images/coral.jpg" alt="Nintendo Switch Lite Coral" class="model-image">
+                <div class="model-details">
+                    <h3 class="model-name">Switch Lite Coral</h3>
+                    <p class="model-price">SGD 269.00</p>
+                    <p class="model-features">
+                        Soft coral design<br>
+                        5.5-inch touch screen<br>
+                        Built-in controllers<br>
+                        3-7 hour battery life
+                    </p>
+                    <button class="shop-button"><a href="buynow.html">Shop Now</a></button>
+                </div>
+            </div>
+
+            <!-- Blue Model -->
+            <div class="model-card">
+                <img src="./images/blue.jpg" alt="Nintendo Switch Lite Blue" class="model-image">
+                <div class="model-details">
+                    <h3 class="model-name">Switch Lite Blue</h3>
+                    <p class="model-price">SGD 269.00</p>
+                    <p class="model-features">
+                        Soft blue design<br>
+                        5.5-inch touch screen<br>
+                        Built-in controllers<br>
+                        3-7 hour battery life
+                    </p>
+                    <button class="shop-button"><a href="buynow.html">Shop Now</a></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison-section container">
+        <h2 class="section-title">Switch Family Comparison</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Switch Lite</th>
+                    <th>Switch (Standard)</th>
+                    <th>Switch OLED</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Price</strong></td>
+                    <td>SGD 269.00</td>
+                    <td>SGD 319.00</td>
+                    <td>SGD 369.00</td>
+                </tr>
+                <tr>
+                    <td><strong>Screen</strong></td>
+                    <td>5.5" LCD</td>
+                    <td>6.2" LCD</td>
+                    <td>7.0" OLED</td>
+                </tr>
+                <tr>
+                    <td><strong>Battery Life</strong></td>
+                    <td>3-7 hours</td>
+                    <td>4.5-9 hours</td>
+                    <td>4.5-9 hours</td>
+                </tr>
+                <tr>
+                    <td><strong>TV Mode</strong></td>
+                    <td>❌</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td><strong>Tabletop Mode</strong></td>
+                    <td>❌</td>
+                    <td>✅</td>
+                    <td>✅ (Enhanced)</td>
+                </tr>
+                <tr>
+                    <td><strong>Handheld Mode</strong></td>
+                    <td>✅ (Dedicated)</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td><strong>Weight</strong></td>
+                    <td>275g</td>
+                    <td>398g</td>
+                    <td>420g</td>
+                </tr>
+                <tr>
+                    <td><strong>Detachable Joy-Cons</strong></td>
+                    <td>❌</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td><strong>HD Rumble</strong></td>
+                    <td>❌</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td><strong>IR Camera</strong></td>
+                    <td>❌</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="text-align: center;">
+            <a href="https://www.nintendo.com/us/switch/compare/" target="_blank" class="cta-button">See Full Comparison</a>
+        </p>
+    </section>
+    
+    <!-- Who Should Choose Switch Lite Section -->
+    <section class="container">
+        <h2 class="section-title">Why is Switch Lite Perfect for You?</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24">
+                    <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+                </svg>
+                <h3 class="feature-title">The Traveller</h3>
+                <p>Perfect for frequent travelers with its compact size and lightweight design. The Turquoise model's vibrant color helps you easily spot it in your travel bag.</p>
+            </div>
+            
+            <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24">
+                    <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+                </svg>
+                <h3 class="feature-title">The Student</h3>
+                <p>Fits easily in backpacks for gaming between classes. The Yellow model brings a cheerful pop of color to brighten study breaks.</p>
+            </div>
+            
+            <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+                <h3 class="feature-title">The Casual Gamer</h3>
+                <p>Ideal for relaxed gaming sessions around the house. The Gray model offers a classic, understated look that matches any decor.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Games Section -->
+    <section class="games-section container">
+        <h2 class="section-title">Featured Games</h2>
+        <div class="games-container">
+            <!-- Zelda -->
+            <div class="game-item">
+                <img src="./images/zelda.jpg" alt="The Legend of Zelda: Breath of the Wild" class="game-image">
+                <h3 class="game-title">The Legend of Zelda: Breath of the Wild</h3>
+                <div class="game-rating">★★★★★</div>
+                <p class="game-description">Embark on an epic adventure across a vast, breathtaking open world. Climb mountains, battle enemies, and solve puzzles in one of the most acclaimed games of all time.</p>
+                <a href="#" class="view-game-btn">View Game</a>
+            </div>
+            
+            <!-- Mario Odyssey -->
+            <div class="game-item">
+                <img src="./images/super.jpg" alt="Super Mario Odyssey" class="game-image">
+                <h3 class="game-title">Super Mario Odyssey</h3>
+                <div class="game-rating">★★★★★</div>
+                <p class="game-description">Join Mario on a globe-trotting 3D adventure. Use his new ally, Cappy, to possess objects and enemies in this critically acclaimed platformer.</p>
+                <a href="#" class="view-game-btn">View Game</a>
+            </div>
+            
+            <!-- Animal Crossing -->
+            <div class="game-item">
+                <img src="./images/animal.jpg" alt="Animal Crossing: New Horizons" class="game-image">
+                <h3 class="game-title">Animal Crossing: New Horizons</h3>
+                <div class="game-rating">★★★★★</div>
+                <p class="game-description">Create your paradise on a deserted island. Build, craft, and make friends with adorable animal villagers in this relaxing life simulation game.</p>
+                <a href="#" class="view-game-btn">View Game</a>
+            </div>
+            
+            <!-- Mario Kart -->
+            <div class="game-item">
+                <img src="./images/mariokart.jpg" alt="Mario Kart 8 Deluxe" class="game-image">
+                <h3 class="game-title">Mario Kart 8 Deluxe</h3>
+                <div class="game-rating">★★★★★</div>
+                <p class="game-description">Race and battle with friends in the definitive version of Mario Kart. Choose from 42 characters and 48 courses in the most expansive Mario Kart game ever.</p>
+                <a href="#" class="view-game-btn">View Game</a>
+            </div>
+        </div>
+        <div class="library-link">
+            <a href="https://www.nintendo.com/us/store/games/" class="explore-library">Explore Full Game Library</a>
+        </div>
+    </section>
+    
+    <!-- Reviews Section -->
+    <section class="reviews-section container">
+        <h2 class="section-title">Customer Reviews</h2>
+        <div class="reviews-container">
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="./images/male2.png" alt="Reviewer" class="reviewer-avatar">
+                    <div class="reviewer-info">
+                        <h4>Alex T.</h4>
+                        <div class="review-rating">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"Perfect for my commute! The Switch Lite is comfortable to hold for long periods and the battery lasts my entire trip. The Turquoise color is gorgeous in person."</p>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="./images/female2.png" alt="Reviewer" class="reviewer-avatar">
+                    <div class="reviewer-info">
+                        <h4>Jessica M.</h4>
+                        <div class="review-rating">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"As a parent, I love how durable the Switch Lite is. My kids have dropped it multiple times and it still works perfectly. Great game selection for all ages too!"</p>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="./images/male1.png" alt="Reviewer" class="reviewer-avatar">
+                    <div class="reviewer-info">
+                        <h4>Marcus W.</h4>
+                        <div class="review-rating">★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"Love the portability and game selection. Would give 5 stars if the battery lasted a bit longer on graphic-intensive games, but overall very satisfied with my purchase."</p>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="./images/female1.png" alt="Reviewer" class="reviewer-avatar">
+                    <div class="reviewer-info">
+                        <h4>Diana P.</h4>
+                        <div class="review-rating">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"The yellow Switch Lite brightens my day! I'm a casual gamer and this is perfect for playing in bed or on the couch. Animal Crossing has been my pandemic savior."</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Deals Section -->
+    <section class="deals-section">
+        <div class="container">
+            <h2 class="section-title">Special Offers</h2>
+            <div class="deals-container">
+                <div class="deal-card">
+                    <h3 class="deal-title">Bundle & Save</h3>
+                    <p class="deal-description">Purchase any Nintendo Switch Lite with selected game and get a free carrying case worth $19.99.</p>
+                    <button class="shop-button" href="#">Shop Bundles</button>
+                </div>
+                
+                <div class="deal-card">
+                    <h3 class="deal-title">Membership Deal</h3>
+                    <p class="deal-description">Join StarLITE today for exclusive member perks! Get $20 off a Nintendo Switch Lite and enjoy premium gaming benefits.</p>
+                    <button class="shop-button" href="#">Be a Member</button>
+                </div>
+                
+                <div class="deal-card">
+                    <h3 class="deal-title">Student Discount</h3>
+                    <p class="deal-description">Students receive a $15 eShop gift card with verified purchase of Nintendo Switch Lite. Download your first game now!</p>
+                    <button class="shop-button" href="#">Verify Status</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="products.html">Nintendo Switch Lite</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="support.html">Help Center</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="control.html">Controls</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="locateus.html">Locate Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="pdpa.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 StarLITE. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

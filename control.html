@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parental Controls | StarLITE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Rubik", sans-serif;
+    }
+
+    body {
+      background-color: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: #e60012;
+      color: white;
+      padding: 18px 5%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative; /* Added position relative */
+    }
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        position: absolute; /* Position logo absolutely */
+        left: 0; /* Align to left */
+        display: flex; /* Added to align text and image horizontally */
+        align-items: center; /* Center items vertically */
+        color: white; /* Ensure text is white */
+    }
+    .logo-image {
+        height: 32px; /* Adjusted to match the star size in the image */
+        margin-left: 8px; /* Space between text and image */
+    }
+    nav {
+        width: 100%; /* Take full width */
+        display: flex;
+        justify-content: flex-end; /* Align content to the right */
+    }
+    nav ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        justify-content: flex-end; /* Ensure list items are right-aligned */
+    }
+    nav ul li {
+        margin-left: 30px;
+        font-weight: 500;
+        font-size: 16px;
+        position: relative;
+    }
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+        color: #ffcc00;
+    }
+    nav ul li a.active {
+        font-weight: 700;
+    }
+
+    /* Navigation Styles with Dropdown */
+    nav ul {
+        display: flex;
+        list-style-type: none;
+    }
+
+    nav ul li {
+        margin-left: 30px;
+        font-weight: 500;
+        font-size: 16px;
+        position: relative;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+        color: #ffcc00;
+    }
+
+    nav ul li a.active {
+        font-weight: 700;
+    }
+
+    /* Dropdown Menu Styles */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 4px;
+      top: 30px;
+      left: 0;
+      transition: visibility 0s, opacity 0.3s;
+      transition-delay: 0.3s, 0s;
+    }
+
+    .dropdown:hover .dropdown-content {
+      visibility: visible;
+      opacity: 1;
+      transition-delay: 0s;
+    }
+
+    /* Keep dropdown visible when hovering over it */
+    .dropdown-content:hover {
+      visibility: visible;
+      opacity: 1;
+      transition-delay: 0s;
+    }
+
+    .dropdown-content a {
+      color: #333;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+      color: #e60012;
+    }
+
+    /* Mobile Menu Button */
+    .mobile-menu-button {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Page Header */
+    .page-header {
+      position: relative;
+      text-align: center;
+      color: white;
+      padding: 60px 5%;
+      overflow: hidden;
+    }
+
+    /* Background image */
+    .page-header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("images/lite.jpg");
+      background-size: cover;
+      background-position: center bottom;
+      z-index: 0;
+    }
+
+    /* Transparent pink gradient overlay */
+    .page-header::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(230, 0, 18, 0.6) 0%, rgba(255, 77, 77, 0.6) 100%);
+      z-index: 1;
+    }
+
+    /* Text content */
+    .page-header h1,
+    .page-header p {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-header h1 {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .page-header p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+
+    /* Main Content */
+    .main-content {
+      background-color: white;
+      padding-bottom: 80px;
+    }
+
+    .content-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    /* Intro Section */
+    .intro-section {
+      padding: 80px 0 40px;
+      text-align: center;
+    }
+
+    .intro-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .intro-container h2 {
+      font-size: 32px;
+      color: #e60012;
+      margin-bottom: 20px;
+    }
+
+    .intro-container p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    /* Feature Cards */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .feature-card {
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #e60012 0%, #ff4d4d 100%);
+      color: white;
+    }
+
+    .feature-icon svg {
+      width: 50px;
+      height: 50px;
+      fill: white;
+    }
+
+    .feature-content {
+      padding: 25px;
+    }
+
+    .feature-content h3 {
+      font-size: 22px;
+      color: #e60012;
+      margin-bottom: 15px;
+    }
+
+    .feature-content p {
+      margin-bottom: 20px;
+      color: #666;
+    }
+
+    /* Demo Section */
+    .demo-section {
+      padding: 60px 0;
+    }
+
+
+    /* Footer */
+    footer {
+        background-color: #222;
+        color: white;
+        padding: 60px 5% 40px;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+    }
+
+    .footer-column h4 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #ffcc00;
+    }
+
+    .footer-links {
+        list-style-type: none;
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links li a {
+        color: #aaa;
+        transition: color 0.3s;
+    }
+
+    .footer-links li a:hover {
+        color: white;
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 60px;
+        padding-top: 20px;
+        border-top: 1px solid #444;
+        color: #aaa;
+        font-size: 14px;
+    }
+
+    .mobile-menu-button {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    /* Media Queries */
+    @media screen and (max-width: 992px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+
+      .mobile-menu-button {
+        display: block;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* Mobile dropdown modifications */
+      .dropdown-content {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        background-color: rgba(0,0,0,0.1);
+        display: none;
+      }
+
+      nav ul li {
+        width: 100%;
+        margin: 0;
+        padding: 10px 0;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+    }
+
+    @media screen and (max-width: 576px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">StarLITE
+          <img src="./images/logo.jpg" alt="StarLITE Logo" class="logo-image">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li class="dropdown">
+            <a href="products.html">Products</a>
+            <div class="dropdown-content">
+              <a href="products.html">Nintendo Switch Lite</a>
+            </div>
+          </li>
+
+          <li class="dropdown">
+            <a href="about.html">About</a>
+            <div class="dropdown-content">
+              <a href="about.html">About Us</a>
+              <a href="blog.html">Blog</a>
+              <a href="locateus.html">Locate Us</a>
+            </div>
+          </li>
+
+          <li class="dropdown">
+            <a href="support.html">Support</a>
+            <div class="dropdown-content">
+              <a href="support.html">Help Center</a>
+              <a href="faqs.html">FAQs</a>
+              <a href="control.html">Controls</a>
+            </div>
+          </li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="mobile-menu-button">☰</button>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Nintendo Switch Parental Controls</h1>
+    <p>Empower your family with tools to manage game time and content</p>
+  </section>
+
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- Intro Section -->
+    <section class="intro-section">
+      <div class="content-container">
+        <div class="intro-container">
+          <h2>Play Safely, Play Smart</h2>
+          <p>Nintendo Switch Lite offers robust parental control features that put you in charge of your family's gaming experience. Easily manage what your children play, when they play, and how they interact online—all from your smartphone or the console itself.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+      <div class="content-container">
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+              </svg>
+            </div>
+            <div class="feature-content">
+              <h3>Purchase Restrictions</h3>
+              <p>Set limits on Nintendo eShop spending and require password approval for purchases.</p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+                <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+              </svg>
+            </div>
+            <div class="feature-content">
+              <h3>Playtime Limits</h3>
+              <p>Set daily play time limits and schedule automatic shutdown times.</p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM8.9 6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2H8.9V6zM18 20H6V10h12v10z"/>
+              </svg>
+            </div>
+            <div class="feature-content">
+              <h3>Content Filtering</h3>
+              <p>Restrict games based on age ratings and control access to age-restricted content.</p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
+                <path d="M12 16.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/>
+              </svg>
+            </div>
+            <div class="feature-content">
+              <h3>Mobile App Control</h3>
+              <p>Manage all parental controls remotely via the free Nintendo Switch Parental Controls app.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo-section">
+      <div class="content-container">
+        <iframe src="interactive.html" width="100%" height="1000" style="border:none;"></iframe>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+      <div class="footer-container">
+          <div class="footer-grid">
+              <div class="footer-column">
+                  <h4>Products</h4>
+                  <ul class="footer-links">
+                      <li><a href="products.html">Nintendo Switch Lite</a></li>
+                  </ul>
+              </div>
+              
+              <div class="footer-column">
+                  <h4>Support</h4>
+                  <ul class="footer-links">
+                      <li><a href="support.html">Help Center</a></li>
+                      <li><a href="faqs.html">FAQs</a></li>
+                      <li><a href="control.html">Controls</a></li>
+                  </ul>
+              </div>
+              
+              <div class="footer-column">
+                  <h4>About</h4>
+                  <ul class="footer-links">
+                      <li><a href="about.html">About Us</a></li>
+                      <li><a href="blog.html">Blog</a></li>
+                      <li><a href="locateus.html">Locate Us</a></li>
+                  </ul>
+              </div>
+              
+              <div class="footer-column">
+                  <h4>Legal</h4>
+                  <ul class="footer-links">
+                      <li><a href="pdpa.html">Privacy Policy</a></li>
+                      <li><a href="terms.html">Terms & Conditions</a></li>
+                  </ul>
+              </div>
+          </div>
+          
+          <div class="copyright">
+              &copy; 2025 StarLITE. All Rights Reserved.
+          </div>
+      </div>
+  </footer>
+
+  <script>
+    // Add any JavaScript needed for mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuButton = document.querySelector('.mobile-menu-button');
+      const navMenu = document.querySelector('nav ul');
+      
+      if (mobileMenuButton) {
+        mobileMenuButton.addEventListener('click', function() {
+          navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+      }
+    });
+  </script>
+</body>
+</html>

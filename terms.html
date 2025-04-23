@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions | Nintendo Switch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Rubik", sans-serif;
+        }
+        
+        body {
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #e60012;
+            color: white;
+            padding: 18px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            .header-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                max-width: 1200px;
+                margin: 0 auto;
+                position: relative; /* Added position relative */
+            }
+            .logo {
+                font-size: 24px;
+                font-weight: bold;
+                position: absolute; /* Position logo absolutely */
+                left: 0; /* Align to left */
+                display: flex; /* Added to align text and image horizontally */
+                align-items: center; /* Center items vertically */
+                color: white; /* Ensure text is white */
+            }
+            .logo-image {
+                height: 32px; /* Adjusted to match the star size in the image */
+                margin-left: 8px; /* Space between text and image */
+            }
+            nav {
+                width: 100%; /* Take full width */
+                display: flex;
+                justify-content: flex-end; /* Align content to the right */
+            }
+            nav ul {
+                display: flex;
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                justify-content: flex-end; /* Ensure list items are right-aligned */
+            }
+            nav ul li {
+                margin-left: 30px;
+                font-weight: 500;
+                font-size: 16px;
+                position: relative;
+            }
+            nav ul li a {
+                color: white;
+                text-decoration: none;
+            }
+            nav ul li a:hover,
+            nav ul li a.active {
+                color: #ffcc00;
+            }
+            nav ul li a.active {
+                font-weight: 700;
+            }
+        
+        /* Dropdown Menu Styles - MODIFIED */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            top: 30px;
+            left: 0;
+            transition: visibility 0s, opacity 0.3s;
+            transition-delay: 0.3s, 0s;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
+        }
+        
+        /* Keep dropdown visible when hovering over it */
+        .dropdown-content:hover {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
+        }
+        
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: #e60012;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #e60012 0%, #ff4d4d 100%);
+            color: white;
+            padding: 60px 5%;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 60px 5%;
+            background-color: white;
+        }
+        
+        .content-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        /* Terms Section */
+        .terms-section {
+            padding: 0 20px;
+        }
+        
+        .terms-section h2 {
+            font-size: 24px;
+            margin: 30px 0 20px;
+            color: #e60012;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        .terms-section h3 {
+            font-size: 20px;
+            margin: 25px 0 15px;
+            color: #333;
+        }
+        
+        .terms-section p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .terms-section ul, .terms-section ol {
+            margin: 15px 0 15px 20px;
+        }
+        
+        .terms-section li {
+            margin-bottom: 10px;
+        }
+        
+        .last-updated {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-style: italic;
+            color: #777;
+        }
+        
+        /* Table of Contents */
+        .toc {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .toc h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #e60012;
+        }
+        
+        .toc ul {
+            list-style-type: none;
+            margin-left: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 10px;
+        }
+        
+        .toc a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .toc a:hover {
+            color: #e60012;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 60px 5% 40px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+        
+        .footer-links {
+            list-style-type: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links li a {
+            color: #aaa;
+            transition: color 0.3s;
+        }
+        
+        .footer-links li a:hover {
+            color: white;
+        }
+        
+        
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+
+        /* Mobile Menu Button */
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer; 
+        }
+        
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .page-header h1 {
+                font-size: 30px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            /* Mobile dropdown modifications */
+            .dropdown-content {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                background-color: rgba(0,0,0,0.1);
+                display: none;
+            }
+            
+            nav ul li {
+                width: 100%;
+                margin: 0;
+                padding: 10px 0;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                StarLITE
+                <img src="./images/logo.jpg" alt="StarLITE Logo" class="logo-image">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li class="dropdown">
+                        <a href="products.html">Products</a>
+                        <div class="dropdown-content">
+                            <a href="products.html">Nintendo Switch Lite</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="about.html">About</a>
+                        <div class="dropdown-content">
+                            <a href="about.html">About Us</a>
+                            <a href="blog.html">Blog</a>
+                            <a href="locateus.html">Locate Us</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="support.html">Support</a>
+                        <div class="dropdown-content">
+                            <a href="support.html">Help Center</a>
+                            <a href="faqs.html">FAQs</a>
+                            <a href="control.html">Controls</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-button">☰</button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Terms & Conditions</h1>
+        <p>Please read our terms and conditions carefully before buying Nintendo products and services from us.</p>
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="content-container">
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#introduction">1. Introduction</a></li>
+                    <li><a href="#definitions">2. Definitions</a></li>
+                    <li><a href="#account">3. Nintendo Account</a></li>
+                    <li><a href="#purchases">4. Purchases and Payments</a></li>
+                    <li><a href="#products">5. Products and Services</a></li>
+                    <li><a href="#warranties">6. Limited Warranty</a></li>
+                    <li><a href="#returns">7. Return and Refund Policy</a></li>
+                    <li><a href="#intellectual">8. Intellectual Property Rights</a></li>
+                    <li><a href="#liability">9. Limitation of Liability</a></li>
+                    <li><a href="#privacy">10. Privacy Policy</a></li>
+                    <li><a href="#modifications">11. Modifications to Terms</a></li>
+                    <li><a href="#termination">12. Termination</a></li>
+                    <li><a href="#disputes">13. Disputes Resolution</a></li>
+                    <li><a href="#governing">14. Governing Law</a></li>
+                    <li><a href="#contact">15. Contact Information</a></li>
+                </ul>
+            </div>
+            
+            <!-- Terms Section -->
+            <div class="terms-section">
+                <section id="introduction">
+                    <h2>1. Introduction</h2>
+                    <p>Welcome to StarLITE, an authorised seller of Nintendo products. These Terms and Conditions ("Terms") govern your use of Nintendo products, services, websites, and applications (collectively referred to as "Services"). By accessing or using our Services, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our Services.</p>
+                    <p>Nintendo Co., Ltd. and its subsidiaries, affiliates, and related companies (collectively, "Nintendo," "we," "us," or "our") provide the Services to you subject to these Terms. These Terms constitute a binding agreement between you and Nintendo.</p>
+                </section>
+                
+                <section id="definitions">
+                    <h2>2. Definitions</h2>
+                    <p>Throughout these Terms, the following definitions apply:</p>
+                    <ul>
+                        <li><strong>"Nintendo Switch"</strong> - Refers to the Nintendo Switch game console, Nintendo Switch Lite, or any future iterations of the Nintendo Switch system.</li>
+                        <li><strong>"Nintendo Account"</strong> - The account system provided by Nintendo that allows users to access various Nintendo services.</li>
+                        <li><strong>"Nintendo eShop"</strong> - The digital store where users can purchase and download Nintendo games and content.</li>
+                        <li><strong>"Content"</strong> - Any games, applications, software, text, images, audio, video, and other materials available through Nintendo Services.</li>
+                    </ul>
+                </section>
+                
+                <section id="account">
+                    <h2>3. Nintendo Account</h2>
+                    <h3>3.1 Account Creation</h3>
+                    <p>To access certain Services, you may need to create a Nintendo Account. You must provide accurate and complete information when creating your account and keep your account information updated. You are responsible for maintaining the confidentiality of your account information, including your password.</p>
+                    
+                    <h3>3.2 Account Security</h3>
+                    <p>You are responsible for all activities that occur under your Nintendo Account. Please notify Nintendo immediately of any unauthorized use of your account or any other breach of security. Nintendo will not be liable for any loss or damage arising from your failure to comply with this section.</p>
+                    
+                    <h3>3.3 Age Restrictions</h3>
+                    <p>Users under the age of 13 (or the minimum age required in your country of residence) must have parental consent to create a Nintendo Account. By creating a Nintendo Account, you represent that you are at least the minimum age required or have obtained parental consent.</p>
+                </section>
+                
+                <section id="purchases">
+                    <h2>4. Purchases and Payments</h2>
+                    <h3>4.1 Pricing and Availability</h3>
+                    <p>All prices are inclusive of GST.</p>
+
+                    <p>StarLITE is limiting purchases on some fast-selling items in an effort to ensure that we can satisfy as many of our customers as possible. We ask that our customers be considerate of others, and only purchase what they need. Thank you for your understanding.</p>
+
+                    <h3>4.2 Payment Methods</h3>
+                    <p>We accept various payment methods which may differ by country or region. By providing a payment method, you represent that you are authorized to use the payment method and that the information you provide is accurate.</p>
+                    
+                    <h3>4.3 Digital Purchases</h3>
+                    <p>All digital purchases are final. Once a digital product has been purchased and the content is made available to you, it cannot be returned or exchanged unless required by applicable law.</p>
+                </section>
+                
+                <section id="products">
+                    <h2>5. Products and Services</h2>
+                    <p>Nintendo Switch hardware purchased directly from StarLITE is covered by our limited warranty as described in section 6.</p>
+
+                    <p>StarLITE reserves the right to change the date that a product becomes available without notice. StarLITE reserves the right to reject your order for any reason.</p>
+                    
+                </section>
+                
+                <section id="warranties">
+                    <h2>6. Limited Warranty</h2>
+                    <p>Nintendo provides a 12-month limited warranty on hardware products purchased from us. This warranty covers defects in materials and workmanship under normal use. This warranty does not cover:</p>
+                    <ol>
+                        <li>Products used for commercial purposes</li>
+                        <li>Damage resulting from accident, misuse, or abuse</li>
+                        <li>Damage resulting from modifications or unauthorized repairs</li>
+                        <li>Cosmetic damage that does not affect functionality</li>
+                        <li>Lost or stolen products</li>
+                    </ol>
+                    <p>For warranty service, please contact StarLITE Customer Support.</p>
+                </section>
+                
+                <section id="returns">
+                    <h2>7. Return and Refund Policy</h2>
+                    
+                    <p>StarLITE will not accept returns for the following items:</p>
+                    <ol>
+                        <li>Any items that are shipped from StarLITE after 15 days from delivery. </li>
+                        <li>Any items that have been opened or unsealed.</li>
+                        <li>Any item that is not in its original condition, is damaged, show signs of use or is missing parts.</li>
+                        <li>Any items that were not purchased directly from StarLITE.</li>
+                        <li>Any physical products that feature digital codes, such as in-game bonus redemption codes.</li>
+
+                    </ol>
+                    
+                </section>
+                
+                <section id="intellectual">
+                    <h2>8. Intellectual Property Rights</h2>
+                    <p>All content and materials available through Nintendo Services, including but not limited to logos, icons, trademarks, images, audio, videos, software, and text, are owned by Nintendo or its respective licensors and are protected by copyright, trademark, and other intellectual property laws.</p>
+
+                    <p>You may not use, reproduce, distribute, modify, or create derivative works from any Nintendo content without express written permission from Nintendo or as permitted by law.</p>
+                </section>
+                
+                <section id="liability">
+                    <h2>9. Limitation of Liability</h2>
+                    <p>To the maximum extent permitted by applicable law, StarLITE shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, or use, arising out of or in connection with these Terms or the use or inability to use Nintendo Services.</p>
+                    <p>StarLITE's total aggregate liability for all claims related to these Terms shall not exceed the amount paid by you to StarLITE for the specific product or service that is the subject of the claim.</p>
+                </section>
+                
+                <section id="privacy">
+                    <h2>10. Privacy Policy</h2>
+                    <p>Your privacy is important to us. Our Privacy Policy explains how we collect, use, and protect your personal information. By using StarLITE Services, you consent to the collection and use of your information as described in our Privacy Policy.</p>
+                </section>
+                
+                <section id="modifications">
+                    <h2>11. Modifications to Terms</h2>
+                    <p>StarLITE reserves the right to change these terms and conditions at any time without prior notice. In the event that any changes are made, the revised terms and conditions shall be posted on this platform immediately. Please check the latest information posted herein to inform yourself of any changes.</p>
+                    <p>For material changes, StarLITE may provide additional notice through email or through notifications on our Services.</p>
+                </section>
+                
+                <section id="termination">
+                    <h2>12. Termination</h2>
+                    <p>Nintendo may, in its sole discretion, terminate or suspend your access to all or part of Nintendo Services for any reason, including, without limitation, violation of these Terms.</p>
+
+                    <p>You may terminate your Nintendo Account at any time by contacting StarLITE Customer Support. Termination of your account may result in the loss of content, data, or other information associated with your account.</p>
+                </section>
+                
+                <section id="disputes">
+                    <h2>13. Disputes Resolution</h2>
+                    <p>Any dispute arising out of or relating to these Terms or Nintendo Services shall first be resolved through informal negotiations. If the dispute cannot be resolved through negotiations, it shall be resolved through arbitration in accordance with the rules of the applicable arbitration association in your region.</p>
+                </section>
+                
+                <section id="governing">
+                    <h2>14. Governing Law</h2>
+                    <p>These Terms shall be governed by and construed in accordance with Singapore's laws, without giving effect to any principles of conflicts of law.</p>
+                </section>
+                
+                <section id="contact">
+                    <h2>15. Contact Information</h2>
+                    <p>If you have any questions about these Terms, please contact StarLITE Customer Support:</p>
+                    <p>
+                        StarLITE Customer Support<br>
+                        Email: support@starlite.com<br>
+                        Phone: + 65 9123 5678<br>
+                        Website: support.starlite.com
+                    </p>
+                </section>
+                
+                <p class="last-updated">Last Updated: April 27, 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="products.html">Nintendo Switch Lite</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="support.html">Help Center</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="control.html">Controls</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="locateus.html">Locate Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="pdpa.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 StarLITE. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

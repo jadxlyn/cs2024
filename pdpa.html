@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | StarLITE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Rubik", sans-serif;
+        }
+        
+        body {
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #e60012;
+            color: white;
+            padding: 18px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative; /* Added position relative */
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            position: absolute; /* Position logo absolutely */
+            left: 0; /* Align to left */
+            display: flex; /* Added to align text and image horizontally */
+            align-items: center; /* Center items vertically */
+            color: white; /* Ensure text is white */
+        }
+        .logo-image {
+            height: 32px; /* Adjusted to match the star size in the image */
+            margin-left: 8px; /* Space between text and image */
+        }
+        nav {
+            width: 100%; /* Take full width */
+            display: flex;
+            justify-content: flex-end; /* Align content to the right */
+        }
+        nav ul {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            justify-content: flex-end; /* Ensure list items are right-aligned */
+        }
+        nav ul li {
+            margin-left: 30px;
+            font-weight: 500;
+            font-size: 16px;
+            position: relative;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #ffcc00;
+        }
+        nav ul li a.active {
+            font-weight: 700;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 180px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            top: 30px;
+            left: 0;
+            transition: visibility 0s, opacity 0.3s;
+            transition-delay: 0.3s, 0s;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content,
+        .dropdown-content:hover {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            display: block;
+            font-size: 14px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: #e60012;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #e60012 0%, #ff4d4d 100%);
+            color: white;
+            padding: 60px 5%;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 60px 5%;
+            background-color: white;
+        }
+        
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Privacy Policy Specific Styles */
+        .policy-section {
+            margin-bottom: 40px;
+        }
+        
+        .policy-section h2 {
+            font-size: 28px;
+            color: #e60012;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .policy-section h3 {
+            font-size: 22px;
+            color: #333;
+            margin: 25px 0 15px;
+        }
+        
+        .policy-section p, .policy-section ul, .policy-section ol {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .policy-section ul, .policy-section ol {
+            padding-left: 25px;
+        }
+        
+        .policy-section ul li, .policy-section ol li {
+            margin-bottom: 8px;
+        }
+        
+        .policy-highlight {
+            background-color: #fff8e1;
+            padding: 20px;
+            border-left: 4px solid #ffcc00;
+            margin: 20px 0;
+        }
+        
+        .policy-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .policy-table th, .policy-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        .policy-table th {
+            background-color: #f9f9f9;
+            font-weight: 600;
+        }
+        
+        .policy-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #e60012;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+        
+        .back-to-top:hover {
+            background-color: #c5000f;
+        }
+        
+        .last-updated {
+            font-style: italic;
+            color: #666;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .policy-toc {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .policy-toc h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .policy-toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .policy-toc ul li {
+            margin-bottom: 10px;
+        }
+        
+        .policy-toc ul li a {
+            color: #e60012;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .policy-toc ul li a:hover {
+            color: #c5000f;
+            text-decoration: underline;
+        }
+
+        .parental{
+            text-decoration: underline;
+        }
+        
+        .parental:hover{
+            color: #c5000f;
+        }
+
+    /* Footer */
+    footer {
+        background-color: #222;
+        color: white;
+        padding: 60px 5% 40px;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+    }
+
+    .footer-column h4 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #ffcc00;
+    }
+
+    .footer-links {
+        list-style-type: none;
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links li a {
+        color: #aaa;
+        transition: color 0.3s;
+    }
+
+    .footer-links li a:hover {
+        color: white;
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 60px;
+        padding-top: 20px;
+        border-top: 1px solid #444;
+        color: #aaa;
+        font-size: 14px;
+    }
+
+    .mobile-menu-button {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+    }
+        
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .page-header h1 {
+                font-size: 30px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+     <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                StarLITE
+                <img src="./images/logo.jpg" alt="StarLITE Logo" class="logo-image">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li class="dropdown">
+                        <a href="products.html">Products</a>
+                        <div class="dropdown-content">
+                            <a href="products.html">Nintendo Switch Lite</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="about.html">About</a>
+                        <div class="dropdown-content">
+                            <a href="about.html">About Us</a>
+                            <a href="blog.html">Blog</a>
+                            <a href="locateus.html">Locate Us</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="support.html">Support</a>
+                        <div class="dropdown-content">
+                            <a href="support.html">Help Center</a>
+                            <a href="faqs.html">FAQs</a>
+                            <a href="control.html">Controls</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-button">☰</button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Privacy Policy</h1>
+        <p>Learn how Nintendo collects, uses, and protects your personal information</p>
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="content-container">
+            <!-- Table of Contents -->
+            <div class="policy-toc">
+                <h3>Contents</h3>
+                <ul>
+                    <li><a href="#introduction">1. Introduction</a></li>
+                    <li><a href="#information-we-collect">2. Information We Collect</a></li>
+                    <li><a href="#how-we-use-information">3. How We Use Your Information</a></li>
+                    <li><a href="#sharing-information">4. Sharing Your Information</a></li>
+                    <li><a href="#data-retention">5. Data Retention and Security</a></li>
+                    <li><a href="#your-rights">6. Your Rights Under PDPA</a></li>
+                    <li><a href="#children-privacy">7. Children's Privacy</a></li>
+                    <li><a href="#international-transfers">8. International Data Transfers</a></li>
+                    <li><a href="#cookies">9. Cookies and Similar Technologies</a></li>
+                    <li><a href="#updates">10. Updates to This Privacy Policy</a></li>
+                    <li><a href="#contact-us">11. Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <!-- Introduction Section -->
+            <div id="introduction" class="policy-section">
+                <h2>1. Introduction</h2>
+                <p>Nintendo Co., Ltd. and its affiliated companies (collectively "Nintendo," "we," "our," or "us") respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you:</p>
+                <ul>
+                    <li>Use our Nintendo Switch Lite console and related services</li>
+                    <li>Visit our websites, including purchasing products from our online stores</li>
+                    <li>Use our mobile applications</li>
+                    <li>Contact our customer service team</li>
+                    <li>Subscribe to our marketing communications</li>
+                    <li>Participate in our events, surveys, or promotions</li>
+                </ul>
+                <p>This Privacy Policy is designed to comply with applicable data protection laws, including the Personal Data Protection Act (PDPA). By using our products and services, you acknowledge that you have read and understood this Privacy Policy.</p>
+                
+                <div class="policy-highlight">
+                    <strong>Important:</strong> Please read this Privacy Policy carefully to understand our policies and practices regarding your personal information and how we will treat it. If you do not agree with our policies and practices, please do not use our products and services.
+                </div>
+            </div>
+            
+            <!-- Information We Collect Section -->
+            <div id="information-we-collect" class="policy-section">
+                <h2>2. Information We Collect</h2>
+                <p>We collect several types of information from and about users of our products and services:</p>
+                
+                <h3>2.1 Personal Information You Provide to Us</h3>
+                <p>We collect personal information that you voluntarily provide to us when you:</p>
+                <ul>
+                    <li>Create a Nintendo Account</li>
+                    <li>Purchase and register products</li>
+                    <li>Contact customer support</li>
+                    <li>Participate in surveys or promotions</li>
+                    <li>Post content in our online communities</li>
+                    <li>Submit job applications</li>
+                </ul>
+                <p>This information may include:</p>
+                <ul>
+                    <li>Contact information (name, email address, postal address, telephone number)</li>
+                    <li>Account information (user name, password, security questions)</li>
+                    <li>Demographic information (date of birth, gender, country of residence)</li>
+                    <li>Payment information (credit card details, billing address)</li>
+                    <li>Your preferences and interests</li>
+                    <li>Communications you send us</li>
+                </ul>
+                
+                <h3>2.2 Information Collected Automatically</h3>
+                <p>When you use our products and services, we may collect certain information automatically, including:</p>
+                <ul>
+                    <li>Device information (device identifiers, IP address, operating system)</li>
+                    <li>Network information (Wi-Fi MAC address, Bluetooth address)</li>
+                    <li>Console-specific information (Nintendo Switch Lite serial number)</li>
+                    <li>Usage data (games played, play duration, interaction with features)</li>
+                    <li>Location information (region settings, time zone)</li>
+                    <li>Online activity data collected through cookies and similar technologies</li>
+                </ul>
+                
+                <h3>2.3 Information from Third Parties</h3>
+                <p>We may receive information about you from third parties, including:</p>
+                <ul>
+                    <li>Social media platforms when you connect them to your Nintendo Account</li>
+                    <li>Game developers and publishers who partner with Nintendo</li>
+                    <li>Marketing partners and analytics providers</li>
+                    <li>Payment processors and financial institutions</li>
+                </ul>
+            </div>
+            
+            <!-- How We Use Your Information Section -->
+            <div id="how-we-use-information" class="policy-section">
+                <h2>3. How We Use Your Information</h2>
+                <p>We use the information we collect for various purposes, including to:</p>
+                
+                <table class="policy-table">
+                    <tr>
+                        <th>Purpose</th>
+                        <th>Examples</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Provide our products and services</strong></td>
+                        <td>
+                            <ul>
+                                <li>Process and fulfill your orders</li>
+                                <li>Register your products</li>
+                                <li>Provide online services and features</li>
+                                <li>Facilitate multiplayer gaming</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Account management</strong></td>
+                        <td>
+                            <ul>
+                                <li>Create and maintain your Nintendo Account</li>
+                                <li>Authenticate your identity</li>
+                                <li>Process payments</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Customer support</strong></td>
+                        <td>
+                            <ul>
+                                <li>Respond to your inquiries</li>
+                                <li>Provide technical assistance</li>
+                                <li>Address product issues</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Product and service improvement</strong></td>
+                        <td>
+                            <ul>
+                                <li>Develop new features</li>
+                                <li>Fix bugs and improve performance</li>
+                                <li>Conduct research and analytics</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Communications</strong></td>
+                        <td>
+                            <ul>
+                                <li>Send transaction confirmations</li>
+                                <li>Provide service updates and notifications</li>
+                                <li>Send marketing communications (with consent)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Security and fraud prevention</strong></td>
+                        <td>
+                            <ul>
+                                <li>Protect our systems and users</li>
+                                <li>Detect and prevent fraudulent transactions</li>
+                                <li>Enforce our terms of use</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Legal compliance</strong></td>
+                        <td>
+                            <ul>
+                                <li>Comply with legal obligations</li>
+                                <li>Respond to legal requests</li>
+                                <li>Establish, exercise, or defend legal claims</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+                
+                <p>We will seek your consent before using your information for purposes not covered by this Privacy Policy unless required by law.</p>
+            </div>
+            
+            <!-- Sharing Your Information Section -->
+            <div id="sharing-information" class="policy-section">
+                <h2>4. Sharing Your Information</h2>
+                <p>We may share your personal information with the following categories of recipients:</p>
+                
+                <h3>4.1 Nintendo Group Companies</h3>
+                <p>We may share your information with our parent company, subsidiaries, and affiliates to provide integrated services and for the purposes described in this Privacy Policy.</p>
+                
+                <h3>4.2 Service Providers</h3>
+                <p>We engage trusted third-party service providers to perform functions on our behalf, such as:</p>
+                <ul>
+                    <li>Payment processing</li>
+                    <li>Customer support</li>
+                    <li>Cloud hosting and storage</li>
+                    <li>Analytics and research</li>
+                    <li>Marketing and advertising</li>
+                    <li>Product shipping and fulfillment</li>
+                </ul>
+                <p>These service providers are contractually obligated to protect your information and may only use it for the specific purposes we have designated.</p>
+                
+                <h3>4.3 Business Partners</h3>
+                <p>We may share limited information with our business partners, such as:</p>
+                <ul>
+                    <li>Game developers and publishers</li>
+                    <li>Promotional partners for joint offerings</li>
+                    <li>Retailers who sell our products</li>
+                </ul>
+                
+                <h3>4.4 Legal Requirements</h3>
+                <p>We may disclose your information when we believe in good faith that disclosure is necessary to:</p>
+                <ul>
+                    <li>Comply with applicable laws, regulations, or legal process</li>
+                    <li>Protect the safety, rights, or property of Nintendo, our users, or others</li>
+                    <li>Detect, investigate, and prevent fraud or security issues</li>
+                    <li>Enforce our terms of service and other agreements</li>
+                </ul>
+                
+                <h3>4.5 Business Transfers</h3>
+                <p>If Nintendo is involved in a merger, acquisition, or sale of assets, your personal information may be transferred as part of that transaction. We will notify you of any change in ownership or uses of your personal information.</p>
+                
+                <div class="policy-highlight">
+                    <strong>Note:</strong> We do not sell your personal information to third parties for their marketing purposes without your explicit consent.
+                </div>
+            </div>
+            
+            <!-- Data Retention and Security Section -->
+            <div id="data-retention" class="policy-section">
+                <h2>5. Data Retention and Security</h2>
+                
+                <h3>5.1 Data Retention</h3>
+                <p>We retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law. The criteria used to determine our retention periods include:</p>
+                <ul>
+                    <li>The length of time we have an ongoing relationship with you</li>
+                    <li>Whether there is a legal obligation to which we are subject</li>
+                    <li>Whether retention is advisable considering our legal position (such as for statutes of limitations, litigation, or regulatory investigations)</li>
+                </ul>
+                <p>When personal information is no longer needed, we will securely delete or anonymize it.</p>
+                
+                <h3>5.2 Data Security</h3>
+                <p>We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include:</p>
+                <ul>
+                    <li>Encryption of sensitive data</li>
+                    <li>Secure network configurations</li>
+                    <li>Access controls and authentication procedures</li>
+                    <li>Regular security assessments and testing</li>
+                    <li>Staff training on data protection practices</li>
+                    <li>Physical security measures at our facilities</li>
+                </ul>
+                <p>While we strive to protect your personal information, no method of transmission over the Internet or electronic storage is 100% secure. We cannot guarantee absolute security but continuously work to enhance our security measures.</p>
+                
+                <div class="policy-highlight">
+                    <strong>Security Tips:</strong> We recommend that you protect your Nintendo Account with a strong password, enable two-factor authentication, and never share your login credentials with others.
+                </div>
+            </div>
+            
+            <!-- Your Rights Under PDPA Section -->
+            <div id="your-rights" class="policy-section">
+                <h2>6. Your Rights Under PDPA</h2>
+                <p>Under the Personal Data Protection Act (PDPA), you have certain rights regarding your personal information. These include:</p>
+                
+                <h3>6.1 Right to Access</h3>
+                <p>You have the right to request access to your personal information that we hold and to obtain information about how we process it.</p>
+                
+                <h3>6.2 Right to Correction</h3>
+                <p>You have the right to request that we correct any inaccurate or incomplete personal information we hold about you.</p>
+                
+                <h3>6.3 Right to Restriction</h3>
+                <p>In certain circumstances, you have the right to request that we restrict the processing of your personal information.</p>
+                
+                <h3>6.4 Right to Data Portability</h3>
+                <p>You may have the right to receive a copy of your personal information in a structured, commonly used, and machine-readable format, and to transmit that data to another controller.</p>
+                
+                <h3>6.5 Right to Object</h3>
+                <p>You have the right to object to the processing of your personal information in certain circumstances, including for direct marketing purposes.</p>
+                
+                <h3>6.6 Right to Withdraw Consent</h3>
+                <p>Where we process your personal information based on your consent, you have the right to withdraw that consent at any time. This will not affect the lawfulness of processing based on your consent before its withdrawal.</p>
+                
+                <h3>6.7 How to Exercise Your Rights</h3>
+                <p>To exercise any of these rights, please contact us using the information provided in the "Contact Us" section. We will respond to your request within 30 days. We may need to verify your identity before fulfilling your request.</p>
+                
+                <p>Please note that some of these rights may be limited where we have compelling legitimate grounds or legal obligations to continue processing your personal information.</p>
+            </div>
+            
+            <!-- Children's Privacy Section -->
+            <div id="children-privacy" class="policy-section">
+                <h2>7. Children's Privacy</h2>
+                <p>We recognize the importance of protecting children's privacy and take specific measures to protect children who use our products and services:</p>
+                
+                <h3>7.1 Age Requirements</h3>
+                <p>Nintendo Switch Online services are intended for users of all ages, but certain features have age restrictions:</p>
+                <ul>
+                    <li>Children under 13 (or the applicable minimum age in your country) need parental consent to create a Nintendo Account</li>
+                    <li>Parents/guardians must create and manage accounts for younger children through Nintendo's Parental Controls system</li>
+                </ul>
+                
+                <h3>7.2 Information Collection from Children</h3>
+                <p>When we knowingly collect personal information from children, we:</p>
+                <ul>
+                    <li>Obtain verifiable parental consent before collection</li>
+                    <li>Limit the information collected to what is reasonably necessary</li>
+                    <li>Provide parents with access to review and manage their child's information</li>
+                    <li>Implement additional security measures to protect children's data</li>
+                </ul>
+                
+                <h3>7.3 Parental Controls</h3>
+                <p>Nintendo Switch Lite offers robust parental controls that allow parents/guardians to:</p>
+                <ul>
+                    <li>Manage their child's friend interactions</li>
+                    <li>Restrict online communication features</li>
+                    <li>Limit eShop purchases</li>
+                    <li>Set playtime limits</li>
+                    <li>Control access to age-restricted content</li>
+                </ul>
+                
+                <p>For more information about our parental controls, please visit <a href="https://www.nintendo.com/switch/parental-controls/" class="parental">https://www.nintendo.com/switch/parental-controls/</a>.</p>
+            </div>
+            
+            <!-- International Data Transfers Section -->
+            <div id="international-transfers" class="policy-section">
+                <h2>8. International Data Transfers</h2>
+                <p>Nintendo operates globally, which means your personal information may be transferred to, stored, and processed in countries outside your country of residence. These countries may have data protection laws that differ from those in your country.</p>
+                
+                <p>When we transfer your personal information internationally, we implement appropriate safeguards to ensure that your information remains protected in accordance with this Privacy Policy and applicable law. These safeguards may include:</p>
+                <ul>
+                    <li>Standard contractual clauses approved by relevant data protection authorities</li>
+                    <li>Intra-group data transfer agreements</li>
+                    <li>Verification that recipients are subject to laws providing adequate protection</li>
+                    <li>Obtaining your explicit consent for specific transfers where required</li>
+                </ul>
+                
+                <p>By using our products and services, you acknowledge that your personal information may be transferred to and processed in countries outside your country of residence.</p>
+            </div>
+            
+            <!-- Cookies and Similar Technologies Section -->
+            <div id="cookies" class="policy-section">
+                <h2>9. Cookies and Similar Technologies</h2>
+                <p>We use cookies and similar technologies to enhance your experience, analyze usage, and assist in our marketing efforts.</p>
+                
+                <h3>9.1 What Are Cookies?</h3>
+                <p>Cookies are small text files that are placed on your device when you visit a website. They are widely used to make websites work efficiently and provide information to the website owners.</p>
+                
+                <h3>9.2 Types of Cookies We Use</h3>
+                <ul>
+                    <li><strong>Essential cookies:</strong> Required for our websites and services to function properly</li>
+                    <li><strong>Functional cookies:</strong> Allow us to remember your preferences and customize your experience</li>
+                    <li><strong>Analytical cookies:</strong> Help us understand how visitors interact with our websites</li>
+                    <li><strong>Advertising cookies:</strong> Used to deliver relevant advertisements and track campaign performance</li>
+                </ul>
+                
+                <h3>9.3 Similar Technologies</h3>
+                <p>In addition to cookies, we may use:</p>
+                <ul>
+                    <li><strong>Web beacons:</strong> Small graphic images that allow us to monitor website usage</li>
+                    <li><strong>Local storage:</strong> Stores data locally on your device for technical purposes</li>
+                    <li><strong>Software development kits (SDKs):</strong> In mobile applications to collect information about how the apps are used</li>
+                </ul>
+                
+                <h3>9.4 Your Cookie Choices</h3>
+                <p>You can manage your cookie preferences through:</p>
+                <ul>
+                    <li>Our cookie preference settings on our websites</li>
+                    <li>Your browser settings (to block or delete cookies)</li>
+                    <li>Third-party opt-out tools for advertising cookies</li>
+                </ul>
+                
+                <p>Please note that blocking certain cookies may impact the functionality of our websites and services.</p>
+            </div>
+            
+            <!-- Updates to This Privacy Policy Section -->
+            <div id="updates" class="policy-section">
+                <h2>10. Updates to This Privacy Policy</h2>
+                <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technologies, legal requirements, or other factors. When we make material changes to this Privacy Policy, we will:</p>
+                <ul>
+                    <li>Post the updated Privacy Policy on our websites</li>
+                    <li>Update the "Last updated" date at the top of the Privacy Policy</li>
+                    <li>Provide notice through our services or by other means as required by applicable law</li>
+                </ul>
+                
+                <p>We encourage you to review this Privacy Policy periodically to stay informed about our information practices. Your continued use of our products and services after any changes to this Privacy Policy constitutes your acceptance of the changes.</p>
+            </div>
+            
+            <!-- Contact Us Section -->
+            <div id="contact-us" class="policy-section">
+                <h2>11. Contact Us</h2>
+                <p>If you have questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us:</p>
+                
+                <div class="policy-highlight">
+                    <p><strong>Data Protection Officer</strong><br>
+                    StarLITE Co., Ltd.<br>
+                    101 Thomson Road <br>
+                    Singapore 307591<br>
+                    
+                    <p><strong>Email:</strong> privacy@starlite.com<br>
+                    <strong>Phone:</strong> +65 9123 5678</p>
+                </div>
+                
+                <p>For Nintendo Account-related inquiries or to exercise your PDPA rights, you can also use the contact options available in your Nintendo Account settings.</p>
+                
+                <p>If you are not satisfied with our response, you may have the right to lodge a complaint with the data protection authority in your country.</p>
+            </div>
+            
+            <div class="last-updated">
+                <p>Last updated: April 17, 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">↑</a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="products.html">Nintendo Switch Lite</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="support.html">Help Center</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="control.html">Controls</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="locateus.html">Locate Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="pdpa.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 StarLITE. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+

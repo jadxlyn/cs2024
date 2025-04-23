@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarLITE | Locate Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    
+    <style>
+
+              .cta-button {
+    background-color: #ff4f4f; /* Red, like the Nintendo Switch buttons */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: scale(1.1); /* Slightly enlarge the button */
+    box-shadow: 0 5px 15px rgba(255, 79, 79, 0.6); /* Nintendo-style glow */
+}
+
+    /* Reset and Base Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Rubik", sans-serif;
+    }
+
+    body {
+        background-color: #f7f7f7;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    /* Header Styles */
+header {
+    background-color: #e60012;
+    color: white;
+    padding: 18px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative; /* Added position relative */
+    }
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        position: absolute; /* Position logo absolutely */
+        left: 0; /* Align to left */
+        display: flex; /* Added to align text and image horizontally */
+        align-items: center; /* Center items vertically */
+        color: white; /* Ensure text is white */
+    }
+    .logo-image {
+        height: 32px; /* Adjusted to match the star size in the image */
+        margin-left: 8px; /* Space between text and image */
+    }
+    nav {
+        width: 100%; /* Take full width */
+        display: flex;
+        justify-content: flex-end; /* Align content to the right */
+    }
+    nav ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        justify-content: flex-end; /* Ensure list items are right-aligned */
+    }
+    nav ul li {
+        margin-left: 30px;
+        font-weight: 500;
+        font-size: 16px;
+        position: relative;
+    }
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+        color: #ffcc00;
+    }
+    nav ul li a.active {
+        font-weight: 700;
+    }
+
+    /* Dropdown */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 180px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        top: 30px;
+        left: 0;
+        transition: visibility 0s, opacity 0.3s;
+        transition-delay: 0.3s, 0s;
+        z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content,
+    .dropdown-content:hover {
+        visibility: visible;
+        opacity: 1;
+        transition-delay: 0s;
+    }
+
+    .dropdown-content a {
+        color: #333;
+        padding: 12px 16px;
+        display: block;
+        font-size: 14px;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+        color: #e60012;
+    }
+
+    /* Hero Section */
+    .hero {
+        position: relative;
+        overflow: hidden;
+        height: 85vh;
+        max-height: 700px;
+        color: white;
+    }
+
+    .hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+    }
+
+    .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 128, 138, 0.5); /* #ff808a at 50% opacity */
+        z-index: 2;
+    }
+
+    .hero-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 60px 5%;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 3;
+    }
+
+    .hero-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        font-family: 'Press Start 2P', cursive;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+        font-weight: 800;
+        margin-bottom: 20px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero p {
+        font-size: 24px;
+        max-width: 600px;
+        margin-bottom: 30px;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 20px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 14px 30px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s;
+        cursor: pointer;
+    }
+
+    .button-primary {
+        background-color: white;
+        color: #e60012;
+    }
+
+    .button-primary:hover {
+        background-color: #f1f1f1;
+        transform: translateY(-2px);
+    }
+
+    .button-secondary {
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+    }
+
+    .button-secondary:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+    }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #e60012 0%, #ff4d4d 100%);
+            color: white;
+            padding: 60px 5%;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 60px 5%;
+            background-color: white;
+        }
+        
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Locate Section */
+        .locate-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .search-panel {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .search-panel h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #e60012;
+        }
+        
+        .search-form {
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .search-button {
+            background-color: #e60012;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .search-button:hover {
+            background-color: #c5000f;
+        }
+        
+        .map-container {
+            flex: 2;
+            min-width: 300px;
+            height: 500px;
+            background-color: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            color: #666;
+        }
+
+        #map {
+    height: 100%;
+    width: 100%;
+}
+
+        
+        /* Store Listings */
+/* Ensure the container is centered and has space around it */
+.store-listings {
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px; /* Set a max-width for the container */
+    margin: 0 auto; /* Center the container */
+}
+
+.stores-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Ensures all 4 store cards are on the same row */
+    gap: 20px; /* Adds space between cards */
+    justify-items: center; /* Centers the grid items horizontally */
+}
+
+.store-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 280px; /* Set max width of each store card */
+}
+
+.store-name {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.store-address,
+.store-detail {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.store-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.store-action-button {
+    background-color: #ff0000; /* Change button color to red */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    display: inline-block;
+}
+
+.store-action-button:hover {
+    background-color: #cc0000; /* Darker red on hover */
+}
+
+/* Optional: Add custom styles for mobile */
+@media (max-width: 768px) {
+    .stores-grid {
+        grid-template-columns: 1fr; /* Stack the store cards on top of each other on small screens */
+    }
+
+    .store-card {
+        max-width: 100%; /* Ensure full width for smaller screens */
+    }
+}
+
+
+        /* Interactive Map Elements */
+        .map-markers {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .map-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #e60012;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .map-marker:hover {
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+        
+        .map-marker::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+        }
+        
+        /* Footer Styles */
+          footer {
+        background-color: #222;
+        color: white;
+        padding: 60px 5% 40px;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+    }
+
+    .footer-column h4 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #ffcc00;
+    }
+
+    .footer-links {
+        list-style-type: none;
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links li a {
+        color: #aaa;
+        transition: color 0.3s;
+    }
+
+    .footer-links li a:hover {
+        color: white;
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 60px;
+        padding-top: 20px;
+        border-top: 1px solid #444;
+        color: #aaa;
+        font-size: 14px;
+    }
+
+    .mobile-menu-button {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+        
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .page-header h1 {
+                font-size: 30px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .stores-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Container Styles */
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000; /* black screen like retro games */
+  color: #fff;
+  font-family: 'Press Start 2P', cursive, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Loading Text */
+.loading-text {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #ffd700; /* Mario coin gold */
+  text-shadow: 2px 2px #e60012; /* red shadow like Mario */
+}
+
+/* Progress Bar */
+.progress-bar {
+  width: 80%;
+  height: 20px;
+  background-color: #555;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Filling animation */
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ffd700, #ffa500); /* gold gradient */
+  animation: fillBar 3s forwards;
+}
+
+/* Animation */
+@keyframes fillBar {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <div class="loading-container">
+  <div class="loading-text">Loading...</div>
+  <div class="progress-bar">
+    <div class="progress-fill"></div>
+  </div>
+</div>
+
+<script>
+  window.onload = function () {
+    setTimeout(() => {
+      document.querySelector('.loading-container').style.display = 'none';
+    }, 3200); // Slightly longer than animation
+  };
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+
+
+    <!-- Header -->
+     <header>
+        <div class="header-container">
+            <div class="logo">
+                StarLITE
+                <img src="./images/logo.jpg" alt="StarLITE Logo" class="logo-image">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li class="dropdown">
+                        <a href="products.html">Products</a>
+                        <div class="dropdown-content">
+                            <a href="products.html">Nintendo Switch Lite</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="about.html">About</a>
+                        <div class="dropdown-content">
+                            <a href="about.html">About Us</a>
+                            <a href="blog.html">Blog</a>
+                            <a href="locateus.html">Locate Us</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="support.html">Support</a>
+                        <div class="dropdown-content">
+                            <a href="support.html">Help Center</a>
+                            <a href="faqs.html">FAQs</a>
+                            <a href="control.html">Controls</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-button">☰</button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Find a Nintendo Store Near You</h1>
+        <p>Locate Nintendo retailers and official stores in your area</p>
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="content-container">
+            <!-- Locate Section -->
+            <div class="locate-section">
+                <!-- Search Panel -->
+                <div class="search-panel">
+                    <h2>Search Locations</h2>
+                    <form class="search-form" id="storeSearchForm">
+                        <div class="form-group">
+                            <label for="address">Address or Postal Code</label>
+                            <input type="text" id="address" placeholder="Enter your location" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="distance">Distance</label>
+                            <select id="distance">
+                                <option value="5">Within 5 km</option>
+                                <option value="10" selected>Within 10 km</option>
+                                <option value="25">Within 25 km</option>
+                                <option value="50">Within 50 km</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="store-type">Store Type</label>
+                            <select id="store-type">
+                                <option value="all" selected>All Stores</option>
+                                <option value="official">Official Nintendo Stores</option>
+                                <option value="retail">StarLITE Retailers</option>
+                                <option value="service">StarLITE Service Centers</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="search-button">Find Stores</button>
+                    </form>
+                    
+                    <h3>Need Help?</h3>
+                    <p>Call our store locator hotline at 
++65 9123 5678 or email us at 
+support@starlite.com</p>
+                </div>
+                
+                <!-- Map Container -->
+                <div class="map-container" style="position: relative; z-index: 1;">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+   // Initialize the map centered on Singapore (Latitude, Longitude) and set zoom level
+var map = L.map('map').setView([1.3521, 103.8198], 12);  // Coordinates for Singapore
+
+// Add OpenStreetMap tiles (you can replace this with other providers if needed)
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// Ensure the map container is displayed properly by resizing it dynamically if needed
+window.addEventListener('resize', function () {
+    map.invalidateSize();
+});
+
+// Function to add a store marker
+function addStoreMarker(lat, lon, title) {
+    var marker = L.marker([lat, lon]).addTo(map);
+    marker.bindPopup(`<b>${title}</b><br>Location of the Nintendo store.`);
+
+}
+
+// Event listener for form submission
+document.getElementById('storeSearchForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    
+    var address = document.getElementById('address').value;
+    var distance = document.getElementById('distance').value;
+    var storeType = document.getElementById('store-type').value;
+
+    // Dummy logic to add markers based on search (in real case, fetch from an API)
+    if (address) {
+        // Clear existing markers (if any)
+        map.eachLayer(function (layer) {
+            if (layer instanceof L.Marker) {
+                map.removeLayer(layer);
+            }
+        });
+
+        // Example: Adding dummy markers based on store type (can be replaced by actual data from a database)
+        if (storeType === "all" || storeType === "official") {
+            addStoreMarker(1.2995470159145015, 103.85552609616921, "Bugis Junction");
+        }
+        if (storeType === "all" || storeType === "StarLITE Retailer") {
+            addStoreMarker(1.3072355632943538, 103.8332926673333, "Far East Shopping Centre - Qisahn");
+        }
+        if (storeType === "all" || storeType === "StarLITE Service Centres") {
+            addStoreMarker(1.3523005054180417, 103.94494382500514, "Tampinies GameXtreme");
+        }
+    }
+});
+
+    </script>
+
+</body>
+</html>
+
+
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Store Listings -->
+<div class="store-listings">
+    <h2>Nearby Star LITE Locations</h2>
+    <div class="stores-grid">
+        <!-- Store 1 -->
+        <div class="store-card">
+            <h3 class="store-name">Lot One</h3>
+            <p class="store-address">21 Choa Chu Kang Ave 4, Singapore 689812</p>
+            <div class="store-details">
+                <div class="store-detail">
+                    <span class="detail-label">Phone:</span>
+                    <span>+65 9126 8392 </span>
+                </div>
+                <div class="store-detail">
+                    <span class="detail-label">Hours:</span>
+                    <span>Mon-Sun: 10AM-9PM</span>
+                </div>
+                <div class="store-detail">
+                    <span class="detail-label">Distance:</span>
+                    <span>2.3 km away</span>
+                </div>
+            </div>
+            <div class="store-actions">
+                <a href="#" class="store-action-button directions-button">Get Directions</a>
+                <a href="#" class="store-action-button details-button">View Details</a>
+            </div>
+        </div>
+
+        <!-- Store 2 -->
+        <div class="store-card">
+            <h3 class="store-name">Bugis Junction</h3>
+            <p class="store-address">200 Victoria St, Singapore 188021</p>
+            <div class="store-details">
+                <div class="store-detail">
+                    <span class="detail-label">Phone:</span>
+                    <span>+65 8823 1117</span>
+                </div>
+                <div class="store-detail">
+                    <span class="detail-label">Hours:</span>
+                    <span>Mon-Sun: 10AM-10PM</span>
+                </div>
+                <div class="store-detail">
+                    <span class="detail-label">Distance:</span>
+                    <span>4.7 km away</span>
+                </div>
+            </div>
+            <div class="store-actions">
+                <a href="#" class="store-action-button directions-button">Get Directions</a>
+                <a href="#" class="store-action-button details-button">View Details</a>
+            </div>
+        </div>
+
+        <!-- Store 3 -->
+        <div class="store-card">
+            <h3 class="store-name">Far East</h3>
+            <p class="store-address">545 Orchard Road, #05-11 Far East Shopping Centre, 238882</p>
+            <div class="store-details">
+                <div class="store-detail">
+                    <span class="detail-label">Phone:</span>
+                    <span>+65 9163 8342</span>
+                </div>
+                <div class="store-detail">
+                    <span class="detail-label">Hours:</span>
+                    <span>Mon-Sun: 9AM-9PM</span>
+                </div>
+                <div class="store-detail">
+                    <span class="detail-label">Distance:</span>
+                    <span>5.6 km away</span>
+                </div>
+            </div>
+            <div class="store-actions">
+                <a href="#" class="store-action-button directions-button">Get Directions</a>
+                <a href="#" class="store-action-button details-button">View Details</a>
+            </div>
+        </div>
+
+        <!-- Store 4 -->
+        <div class="store-card">
+            <h3 class="store-name">Tampinies Mall</h3>
+            <p class="store-address">4 Tampines Central 5, Tampines Mall, Singapore 529510</p>
+            <div class="store-details">
+                <div class="store-detail">
+                    <span class="detail-label">Phone:</span>
+                    <span>+65 8239 1283</span>
+                </div>
+                <div class="store-detail">
+                    <span class="detail-label">Hours:</span>
+                    <span>Mon-Sun: 8AM-10PM</span>
+                </div>
+                <div class="store-detail">
+                    <span class="detail-label">Distance:</span>
+                    <span>7.9 km away</span>
+                </div>
+            </div>
+            <div class="store-actions">
+                <a href="#" class="store-action-button directions-button">Get Directions</a>
+                <a href="#" class="store-action-button details-button">View Details</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Footer -->
+   <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="products.html">Nintendo Switch Lite</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="support.html">Help Center</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="control.html">Controls</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="locateus.html">Locate Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="pdpa.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 StarLITE. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
